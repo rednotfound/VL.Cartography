@@ -94,6 +94,49 @@ VL.ExtendedTutorials numbers its Math series the same way — `Explanation 01 In
 `Help.xml` still carries the tags and groups chapters into parts, and the validator checks it
 against the disk in both directions.
 
+## The dev loop, and the one step that is not optional
+
+Nothing is published. Every node a chapter uses comes off a sibling's `dist\` folder on disk, so
+the loop never touches nuget.org:
+
+```
+1. close vvvv                        build refuses while it holds the assemblies, and says so
+2. change a library -> run THAT library's .\pack.ps1
+3. here:  .\tools\Compile-HelpPatches.ps1      <- the integration test
+4.        .\tools\Open-HelpPatch.ps1 "name"    -> read -> close
+```
+
+**Step 2 is mandatory, and the reason is not obvious.** Every package sits at `0.0.1-alpha` and the
+version never changes during development. **NuGet sees a matching version, uses its cache, and
+never looks at the feed** — so a library you just rebuilt is silently ignored and you spend half an
+hour debugging yesterday's code. All three siblings' `pack.ps1` evict the stale copy from both
+`%USERPROFILE%\.nuget\packages` and vvvv's `package-cache`; skipping `pack.ps1` is what reopens the
+hole.
+
+**Step 3 is why this pack is worth its weight.** Change a pin name in a library and the compile
+here goes red — `VisibleRange doesn't have a pin called "Result"` is a real one from 2026-08-16.
+A library's API cannot move without a chapter telling you.
+
+### When to publish
+
+`VL.NetTopologySuite` and `VL.GeoJSON` depend on nothing of ours; `VL.Mapsui` depends on
+VL.NetTopologySuite; this pack depends on all three. **Publish in that order or an install fails.**
+
+**But not yet.** A published version is permanent — nuget.org cannot delete, only unlist, and this
+family already spent a day on the consequences of one published alpha (`VL.GIS 0.2.0-alpha`, which
+declares BruTile 6 and breaks VL.Mapsui; the fix exists in source and was never published). Mean-
+while the same `0.0.1-alpha` gets repacked a dozen times a day here, which is flatly incompatible
+with permanence.
+
+The signal to publish is **the node surface going a week without moving**, plus enough chapters to
+learn from. Until then `Test-Install.ps1` in each library already simulates a real install locally:
+NuGet resolves the real dependency graph into a temp folder, and the help patches are compiled
+**from the installed package**.
+
+This repository has no `build.ps1` or `pack.ps1` yet — there is nothing to compile. One is needed
+before it can be published; `nuget pack VL.Cartography.nuspec` has been verified by hand to produce
+the right contents.
+
 ## Commands
 
 ```powershell
