@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>VL.Cartography</id>
+    <version>0.0.1-alpha</version>
+    <title>VL.Cartography — maps and geodata for vvvv gamma</title>
+    <authors>VL.Cartography Contributors</authors>
+    <owners>VL.Cartography Contributors</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/rednotfound/VL.Cartography</projectUrl>
+    <description>
+      EARLY - a course, not a library.
+
+      Maps and geographic data in vvvv gamma, taught from the ground up. This package contains no
+      nodes of its own. It installs the libraries that do — VL.Mapsui to draw maps,
+      VL.NetTopologySuite for geometry, VL.GeoJSON to read and write it — and adds the chapters
+      that show them working together.
+
+      That is why it exists at all: a worthwhile map example needs several libraries at once, and
+      no single library can declare the others without pretending to be something it is not.
+
+      Starts from what a coordinate actually is, and ends at thousands of features on a live map.
+      No GIS background assumed; a working knowledge of vvvv gamma is.
+
+      Requires vvvv gamma 7.4 or newer.
+    </description>
+    <summary>A course in maps and geographic data for vvvv gamma. Installs the libraries it teaches.</summary>
+    <releaseNotes>
+      0.0.1-alpha - First package. Not published.
+    </releaseNotes>
+    <copyright>Copyright 2026 VL.Cartography Contributors</copyright>
+    <!--
+      The "VL" tag is what makes the pack discoverable at https://vvvv.org/packs. The rest are the
+      words someone would actually type: this package's NAME is unambiguous in a graphics community
+      - "mapping" there means projector warping, and VL.Mapper and VL.BadMapper already own that
+      word - but "cartography" is not the first thing anyone searches for either. The tags carry
+      the search.
+    -->
+    <tags>VL vvvv gamma gis geo geospatial map maps cartography geojson coordinates projection mercator tutorial course</tags>
+    <repository type="git" url="https://github.com/rednotfound/VL.Cartography" />
+
+    <!--
+      THE DEPENDENCIES ARE THE POINT OF THIS PACKAGE.
+
+      Measured 2026-08-16: a nuspec <dependency> really is installed transitively, so one install
+      of this brings the whole family. That is the thing a cross-library course can offer and an
+      individual library cannot - VL.Mapsui must not depend on VL.GeoJSON, because a map engine has
+      no business requiring a GeoJSON reader, and the reverse is just as wrong.
+
+      Versions are floors, not pins. A chapter that breaks against a newer library is a finding
+      about the library, and the compile harness here is what surfaces it - this pack is a
+      standing integration test that happens to also teach.
+    -->
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="VL.Mapsui" version="0.0.1-alpha" />
+        <dependency id="VL.GeoJSON" version="0.0.1-alpha" />
+        <dependency id="VL.NetTopologySuite" version="0.0.1-alpha" />
+      </group>
+    </dependencies>
+  </metadata>
+
+  <files>
+    <!-- Entry point. Must sit at the package root, no subfolder, or vvvv never finds the package. -->
+    <file src="VL.Cartography.vl" target="" />
+
+    <!--
+      No lib\ and no assembly, deliberately. This package contributes no nodes; every file it ships
+      is a lesson. VL.ExtendedTutorials is the same shape and is the precedent.
+    -->
+    <file src="help\**\*.vl" target="help\" />
+    <file src="help\Help.xml" target="help\" />
+
+    <!--
+      Sample data. Its own line because the glob above takes .vl and nothing else, and a chapter
+      whose Path pin points at nothing is the quietest failure in this ecosystem. Every asset's
+      licence is named in THIRD-PARTY-NOTICES.md.
+    -->
+    <file src="help\Assets\**" target="help\Assets\" />
+
+    <file src="README.md" target="docs\" />
+    <file src="THIRD-PARTY-NOTICES.md" target="docs\" />
+  </files>
+</package>

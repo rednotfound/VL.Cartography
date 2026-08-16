@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" Id="TDffRuwpzBnngOk5yp3D6B" LanguageVersion="2025.7.4" Version="0.128">
+  <!--
+    The entry document, and it is deliberately empty.
+
+    A VL package must have a .vl at its root or vvvv never finds it, but this package contributes
+    no nodes: every line of it is a help patch. VL.ExtendedTutorials ships exactly this - an empty
+    Application and 1322 bytes - and it is the shape to copy, because the alternative is inventing
+    nodes nobody asked for so the package has something to declare.
+
+    The libraries this pack teaches are declared in VL.Cartography.nuspec, not here. A user
+    installs one package and the whole family arrives.
+  -->
+  <Patch Id="DMwwTMv9lp5zata3xHQIGe">
+    <Canvas Id="QyAdygQUgebU4XkRax4rv2" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
+    <Node Name="Application" Bounds="100,100" Id="R3jcg2k9fvkTmXbuaMiy6G">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <FullNameCategoryReference ID="Primitive" />
+      </p:NodeReference>
+      <Patch Id="LMRUikRVdCzfu5Ko6ctfZL">
+        <Canvas Id="FUwRiLv3FsSX7s6B0Oa2OM" CanvasType="Group" />
+        <Patch Id="E9TRGNctKHYcfCxxS67hpy" Name="Create" />
+        <Patch Id="PzMAPMqUjkMA3K4UXjiqyW" Name="Update" />
+        <ProcessDefinition Id="FJLBsLqyLKqijEVCgJqgcF">
+          <Fragment Id="K1HvTx1cLHFSPYp4X3FFwJ" Patch="E9TRGNctKHYcfCxxS67hpy" Enabled="true" />
+          <Fragment Id="Mx9aMeRJNKHli5fDxJtXA3" Patch="PzMAPMqUjkMA3K4UXjiqyW" Enabled="true" />
+        </ProcessDefinition>
+      </Patch>
+    </Node>
+  </Patch>
+  <NugetDependency Id="AcZU47wu6COL9Wr0tJ6zs7" Location="VL.CoreLib" Version="2025.7.4" />
+</Document>

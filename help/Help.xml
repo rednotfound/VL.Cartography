@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Pack>
+	<!--
+		THE CHAPTERS ARE NUMBERED IN THE FILENAME, and that is a deliberate departure from the
+		convention the sibling libraries follow.
+
+		In a library's help\, the patches are a flat set of HowTos that can be read in any order,
+		so numbering the files makes every gap look like a broken install and Help.xml does the
+		sequencing. Here the order is load bearing: chapter 05 assumes you know what a coordinate
+		is, and reading them out of order does not work. VL.ExtendedTutorials numbers its Math
+		series the same way, for the same reason - Explanation 01 Intro through 20 FPS Camera.
+
+		Help.xml still carries the tags, and still groups the chapters into parts.
+	-->
+	<Topic title="Drawing data">
+		<VLDocument link="05 Drawing GeoJSON on a map.vl" tags="geojson,map,mapsui,read,parse,feature,nts,netTopologySuite,style,styleByGeometry,label,marker,wgs84,mercator,projection,integration,packages" />
+	</Topic>
+</Pack>
