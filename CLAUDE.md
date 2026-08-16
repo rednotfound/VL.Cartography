@@ -67,6 +67,22 @@ The ones that bite hardest here:
 5. **Validate before committing, in a separate step.** A check whose result arrives after the push
    is not a gate.
 
+## Before adding a chapter, read `docs/CURRICULUM.md`
+
+**The course order is derived, not invented** — the first outline was invented and got it backwards,
+opening with coordinate systems when all three authoritative sources put the data model first and
+none of them leads with CRS. `docs/CURRICULUM.md` carries the sources, their licences, the
+sequencing evidence, and what we deliberately skip.
+
+Two things from it that constrain the work:
+
+- **Only [FOSS4G GeoAcademy](https://github.com/FOSS4GAcademy) may be borrowed from as text** —
+  CC-BY 3.0, attribution required. The QGIS Training Manual is CC BY-**SA** and would spread
+  share-alike into our MIT patches; Geocomputation with R is CC-BY-**NC-ND** and may only be cited.
+- **A chapter with no source is allowed but must say so.** Chapters 07 and 08 have none, because a
+  desktop GIS has neither a frame loop nor a cursor to ask. That should be a stated decision rather
+  than an accident.
+
 ## Chapters are numbered in the filename
 
 A departure from the sibling libraries, and deliberate. In a library's `help\` the patches are a

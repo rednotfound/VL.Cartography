@@ -54,16 +54,33 @@ Each chapter runs. Numbered, because the order is load bearing — later chapter
 ones, which is the case where the vvvv convention puts numbers in the filename rather than leaving
 the sequence to `Help.xml`.
 
-| | chapter | the idea |
-|---|---|---|
-| 01 | A coordinate is not a position | longitude/latitude against metres; why the map draws in mercator; why you cannot measure distance in degrees |
-| 02 | Geometry is a type, not a format | point, line, polygon — and WKT and GeoJSON as two spellings of one thing |
-| 03 | A feature is geometry plus attributes | the join between space and data, which is what lets a map answer a question |
-| 04 | Reading real data | GeoJSON from a file, where real files come from, and what their licences ask of you |
-| 05 | Drawing it | one style per geometry type, labels, and two traps that cost a day each |
-| 06 | Stacking | draw order is position; bands; and why order alone never reduces a busy map |
-| 07 | Asking the map | picking — what is under the cursor, and getting data back out |
-| 08 | Scale | thousands of features, and why the frame loop decides between 0.013 ms and 43 |
+**The order is not invented.** It follows the [FOSS4G GeoAcademy](https://github.com/FOSS4GAcademy)
+GST 101 curriculum — CC-BY 3.0, funded by the US Department of Labor, aligned to the Geospatial
+Technology Competency Model — with the sequence adjusted where the
+[QGIS Training Manual](https://docs.qgis.org/latest/en/docs/training_manual/index.html) shows a
+better fit for an audience that wants to see something on screen.
+**[CURRICULUM.md](https://github.com/rednotfound/VL.Cartography/blob/main/docs/CURRICULUM.md) is the
+working**, with the sources, their licences, and what we skip. (An absolute link on purpose: this
+README ships inside the package, where a repository-relative path would not resolve.)
+
+| | chapter | based on | the idea |
+|---|---|---|---|
+| 01 | Vector and raster: your two kinds of layer | GST 101 Lab 2 | a tile layer *is* raster, a feature layer *is* vector. Zoom in: the tiles blur, the vector does not |
+| 02 | A feature is geometry plus attributes | Lab 2 / Lab 4 | the join between space and data, which is what lets a map answer a question |
+| 03 | Reading real data | Lab 2 / GST 103 | GeoJSON from a file, where real files come from, and what their licences ask of you |
+| 04 | Drawing it | Lab 4 | one style per geometry type, labels, and two traps that cost a day each |
+| 05 | Stacking | Lab 4 | draw order is position; bands; and why order alone never reduces a busy map |
+| 06 | Coordinate systems and distortion | Lab 3 | the same country in several projections, and what happens to its shape and area |
+| 07 | Asking the map | **no precedent** | picking — what is under the cursor, and getting data back out |
+| 08 | Scale and the frame loop | **no precedent** | thousands of features, and why the frame loop decides between 0.013 ms and 43 |
+
+Chapters 07 and 08 appear in none of the sources, and that is not an oversight in the sources: a
+desktop GIS is not redrawing sixty times a second, and "what is under the cursor" is a built-in
+behaviour there rather than something you wire. They are ours because the host is.
+
+**Only chapter 04 exists so far**, and it still carries its old number `05` from the invented
+outline. It is renumbered once the chapters before it are written — renaming it now would leave its
+cross-references pointing at chapters that do not exist.
 
 ---
 

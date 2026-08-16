@@ -81,5 +81,17 @@
 
     <file src="README.md" target="docs\" />
     <file src="THIRD-PARTY-NOTICES.md" target="docs\" />
+
+    <!--
+      The curriculum's sources and licences ship too. README links to it, and a link that resolves
+      in the repository but not inside the installed package is the quiet kind of broken - the
+      reader who most wants "why is it in this order" is the one reading it offline.
+
+      Note the flattening: everything here lands in docs\ side by side, so README's cross-links to
+      its neighbours must be BARE FILENAMES, not docs\-prefixed paths. That is why the reference
+      to this file from README is an absolute URL instead - it is the only form correct in both
+      places at once.
+    -->
+    <file src="docs\CURRICULUM.md" target="docs\" />
   </files>
 </package>
