@@ -47,16 +47,31 @@ folder was the first attempt and was worse: nothing there is packed, so **no use
 
 ## And the second reason, which matters more
 
-**The chapters are how the libraries get tested.** On 2026-08-16 one cross-package patch found
-three real defects in VL.Mapsui that 218 unit tests had not:
+**The chapters are how the libraries get tested**, and the record is now five defects in two days,
+none of which the unit suite had.
+
+On **2026-08-16**, one cross-package patch found three that 218 tests had missed:
 
 - `SymbolStyle` drew **0 pixels** for a polygon, silently erasing half a dataset
 - the first fix stacked two styles and put a second circle on every point
 - a nested `StyleCollection` rendered nothing at all — 156 px where the flat one drew 14884
 
-None was reachable by testing one library alone. **This pack is a standing integration test that
-happens also to teach**, which is why it has a compile harness and is a package rather than a
-folder of files.
+On **2026-08-17**, `Tutorial 01` — whose entire lesson is switching basemaps — found two more on its
+first run:
+
+- **every tile source shared one cache folder**, so the second basemap you picked never fetched
+  anything. Changing the preset appeared to do nothing while every status pin reported success
+- **each switch leaked a connection pool**, because the `HttpTileSource` was rebuilt along with the
+  layer and BruTile never releases one
+
+Note the shape of all five. **Not one is an arithmetic error; every one is about composition or
+lifetime** — two styles meeting, two packages meeting, two tile sources meeting one cache. A suite
+organised one node at a time cannot contain them, which is an argument about test *shape* rather
+than test count. The second pair also needed something the tests structurally lack: **a person
+looking at the picture.** Every automated signal said the switch had worked.
+
+**This pack is a standing integration test that happens also to teach**, which is why it has a
+compile harness and is a package rather than a folder of files.
 
 ## Working rules carried from the sibling repositories
 
