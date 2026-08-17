@@ -1,8 +1,8 @@
 # VL.Cartography
 
-**Maps and geographic data in [vvvv gamma](https://vvvv.org), taught from the ground up.**
+**Maps and geographic data in [vvvv gamma](https://vvvv.org).**
 
-This package contains **no nodes**. It installs the libraries that do, and adds the chapters that
+This package contains **no nodes**. It installs the libraries that do, and adds the patches that
 show them working together:
 
 | library | what it does |
@@ -11,82 +11,110 @@ show them working together:
 | [VL.NetTopologySuite](https://github.com/rednotfound/VL.NetTopologySuite) | geometry: points, lines, polygons, and operations on them |
 | [VL.GeoJSON](https://github.com/rednotfound/VL.GeoJSON) | reads and writes the format the data actually arrives in |
 
-Install this one and all three arrive. The chapters appear in vvvv's Help Browser.
+Install this one and all three arrive. Everything appears in vvvv's Help Browser.
 
 > **Status: early.** Nothing here is on nuget.org yet.
+
+> **This is not your first vvvv patch.** It assumes you can read a node graph, wire a pin and find
+> the Help Browser. If that is not you yet,
+> [VL.TheBigBang](https://github.com/chkw-rks/VL.TheBigBang) is where to start. It assumes
+> **nothing at all** about maps or GIS.
+
+---
+
+## Two tiers
+
+**The spine** is short, ordered, and each unit adds exactly one capability. Numbering is a claim
+that order matters, so it is spent only here.
+
+| | | you end up with |
+|---|---|---|
+| **Tutorial 01** | Change how the world looks | a map — and the knowledge that its entire appearance is one string you own |
+| **Tutorial 02** | Your own points, lines and polygons | shapes you made, drawn on the earth, styled by kind |
+| **Tutorial 03** | The map is just giving you coordinates | the escape hatch: the map hands you an x and a y, and you draw whatever you like |
+| **Tutorial 04** | Real data | GeoJSON, from a file or straight off the network |
+
+**The prompts** are unordered, unnumbered and skippable. Pick one. Ignore the rest. There is no
+prerequisite and no completion.
+
+> *Two colours only* · *Minimal map* · *Live earthquakes* · *Out of this world* ·
+> *Places and their names*
+
+**Only Tutorial 04 exists so far.**
+
+### Why 03 comes before 04
+
+Because that is the moment the map stops being a map. [Unfolding](http://unfoldingmaps.org/) — the
+Processing map library written for designers and artists — puts the same lesson before its GeoJSON
+tutorial, and says why: *"the easiest method to create a custom style is to draw the marker
+yourself."* The map becomes a coordinate provider and you are back in the visual language you
+already have. Making someone read a file format before they get there would be a strange choice.
+
+---
+
+## Where the order comes from
+
+It has been wrong twice, and both corrections are written up in
+**[CURRICULUM.md](https://github.com/rednotfound/VL.Cartography/blob/main/docs/CURRICULUM.md)**,
+with the sources and their licences. (An absolute link on purpose: this README ships inside the
+package, where a repository-relative path would not resolve.)
+
+The short version. [FOSS4G GeoAcademy](https://github.com/FOSS4GAcademy)'s GST 101 is the
+**coverage checklist** — it answers *do we teach what the field considers core?* It does not order
+the units, because it is a graded university course whose reader cannot leave, and optimising for
+coverage put a vocabulary lesson at the door twice running.
+
+The order and the naming come from
+[**#30DayMapChallenge**](https://github.com/tjukanovt/30DayMapChallenge), where more than 50,000
+maps have been posted since 2019. Its days 1, 2 and 3 are Points, Lines, Polygons — in 2023, 2024
+and 2025 alike. Projections land on day 19. Choropleth on day 13, and by 2025 it is gone.
+
+That is **the same content order GST 101 uses.** What differs is one word per unit:
+
+| GST 101 Lab 2 | 30DMC day 1 |
+|---|---|
+| *Spatial Data Models: vector vs raster* | **Points** |
+
+A taxonomy, versus a thing to make.
 
 ---
 
 ## Why a separate package
 
 GIS is a large topic, and **anything worth showing needs more than one library**. Reading a GeoJSON
-file, projecting it, styling it by geometry type and drawing it on a map touches three packages —
-and no single one of them can declare the other two without pretending to be something it is not.
-A map engine has no business requiring a GeoJSON reader; a GeoJSON reader has no business requiring
-a map engine. They compose through NetTopologySuite, which is a library they share rather than an
-agreement they made.
+file, styling it by geometry type and drawing it on a map touches three packages — and no single one
+can declare the other two without pretending to be something it is not. A map engine has no business
+requiring a GeoJSON reader; a GeoJSON reader has no business requiring a map engine. They compose
+through NetTopologySuite, which is a library they share rather than an agreement they made.
 
-So the examples need a home of their own. That home is this package, and the shape is the one
+So the patches need a home of their own. The shape is the one
 [VL.ExtendedTutorials](https://www.nuget.org/packages/VL.ExtendedTutorials) and
 [VL.TheBigBang](https://github.com/chkw-rks/VL.TheBigBang) already use: no assembly, an empty entry
 document, everything in `help\`, and a nuspec that declares the libraries being taught.
 
-**And the examples are not documentation — they are how the libraries get tested.** On
-2026-08-16 a single cross-package patch found three real defects in VL.Mapsui that 212 unit tests
-had not: a style that silently erased every polygon, a fix for it that drew two markers on every
-point, and a nested style collection that rendered nothing at all. None of them could have been
-caught by testing one library alone. **This pack is a standing integration test that happens also
-to teach.**
+**And these are not documentation — they are how the libraries get tested.** On 2026-08-16 a single
+cross-package patch found three real defects in VL.Mapsui that 218 unit tests had not: a style that
+silently erased every polygon, a fix for it that drew two markers on every point, and a nested style
+collection that rendered nothing at all. None could have been caught by testing one library alone.
+**This pack is a standing integration test that happens also to teach.**
 
----
+### Where a patch belongs
 
-## Where a patch belongs
+> **One package → that package's own `help\`. Two or more → here.** The one exemption is a spine
+> `Tutorial`, which may need a single package when the course's sequence requires it — a course with
+> a hole at chapter 1 is worse than a duplicated node.
 
-> **One package → that package's own `help\`. Two or more → here.**
-
-It is a rule rather than a habit, and the validator checks it in both directions.
-
----
-
-## The course
-
-Each chapter runs. Numbered, because the order is load bearing — later chapters assume earlier
-ones, which is the case where the vvvv convention puts numbers in the filename rather than leaving
-the sequence to `Help.xml`.
-
-**The order is not invented.** It follows the [FOSS4G GeoAcademy](https://github.com/FOSS4GAcademy)
-GST 101 curriculum — CC-BY 3.0, funded by the US Department of Labor, aligned to the Geospatial
-Technology Competency Model — with the sequence adjusted where the
-[QGIS Training Manual](https://docs.qgis.org/latest/en/docs/training_manual/index.html) shows a
-better fit for an audience that wants to see something on screen.
-**[CURRICULUM.md](https://github.com/rednotfound/VL.Cartography/blob/main/docs/CURRICULUM.md) is the
-working**, with the sources, their licences, and what we skip. (An absolute link on purpose: this
-README ships inside the package, where a repository-relative path would not resolve.)
-
-| | chapter | based on | the idea |
-|---|---|---|---|
-| 01 | Vector and raster: your two kinds of layer | GST 101 Lab 2 | a tile layer *is* raster, a feature layer *is* vector. Zoom in: the tiles blur, the vector does not |
-| 02 | A feature is geometry plus attributes | Lab 2 / Lab 4 | the join between space and data, which is what lets a map answer a question |
-| 03 | Reading real data | Lab 2 / GST 103 | GeoJSON from a file, where real files come from, and what their licences ask of you |
-| 04 | Drawing it | Lab 4 | one style per geometry type, labels, and two traps that cost a day each |
-| 05 | Stacking | Lab 4 | draw order is position; bands; and why order alone never reduces a busy map |
-| 06 | Coordinate systems and distortion | Lab 3 | the same country in several projections, and what happens to its shape and area |
-| 07 | Asking the map | **no precedent** | picking — what is under the cursor, and getting data back out |
-| 08 | Scale and the frame loop | **no precedent** | thousands of features, and why the frame loop decides between 0.013 ms and 43 |
-
-Chapters 07 and 08 appear in none of the sources, and that is not an oversight in the sources: a
-desktop GIS is not redrawing sixty times a second, and "what is under the cursor" is a built-in
-behaviour there rather than something you wire. They are ours because the host is.
-
-**Only chapter 04 exists so far**, and it still carries its old number `05` from the invented
-outline. It is renumbered once the chapters before it are written — renaming it now would leave its
-cross-references pointing at chapters that do not exist.
+The validator checks it in both directions.
 
 ---
 
 ## If you installed VL.GIS
 
-**`VL.GIS 0.2.0-alpha` conflicts with VL.Mapsui and cannot be fixed by uninstalling.** It declares
+`VL.GIS` is retired, and **all six of its published versions are unlisted** (verified 2026-08-16).
+Unlisting is not deletion, though, and it does nothing whatever for someone who already installed
+it — which is what this section is for.
+
+**`VL.GIS 0.2.0-alpha` conflicts with VL.Mapsui, and uninstalling does not fix it.** It declares
 `BruTile 6`, while `Mapsui.Tiling` requires `BruTile [5.0.6, 6.0.0)`, and the two are not
 compatible — `BruTile.Attribution` changed layout between them, so loading both throws
 `TypeLoadException`. It also drags in `NetTopologySuite.IO.GeoJSON 3.0.0`, which pins
@@ -108,7 +136,7 @@ Moving them somewhere else first is the reversible version, and is what we did o
 
 ## Licence
 
-MIT for the patches. **Sample data keeps its own licence** — see
-[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). Anything derived from OpenStreetMap is ODbL and
-requires attribution wherever it is shown, which chapter 04 treats as part of the lesson rather
-than as small print.
+MIT for the patches. **Sample data and tile services keep their own terms** — see
+[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md), which also records two basemaps that return a
+perfectly good tile and are **not permitted for this use**. A request that succeeds tells you
+nothing about whether you were allowed to make it.

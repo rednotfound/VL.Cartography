@@ -1,12 +1,25 @@
 # What this course is based on
 
-The first outline for this pack was **invented** — assembled from whatever the libraries had just
-run into, plus general knowledge. Asked what it was based on, the honest answer was "nothing".
+This document has now been wrong twice, in the same way both times, and the second correction is
+the reason it is worth reading.
 
-So the field was searched, and it has plenty. It also **disagreed with the invented order**, which
-is the main reason this document exists: so that "why is it taught in this sequence" has an answer
-made of evidence rather than taste, and so that the answer can be re-checked when a chapter is
-added.
+**First version.** The outline was *invented* — assembled from whatever the libraries had just run
+into. Asked what it was based on, the honest answer was "nothing". So the field was searched, and
+FOSS4G GeoAcademy's **GST 101** became the spine. That research was real and most of it survives
+below.
+
+**Second version — this one.** GST 101 is a graded university course. Its reader is enrolled, and
+as this document already observed about Lab 3, it suits "an academic course where nobody leaves
+after week two". A vvvv reader is **voluntary, visual, arrives through the Help Browser, and leaves
+the moment nothing is on screen.** Optimising the sequence for coverage produced, twice running, a
+vocabulary lesson at the door: first *"a coordinate is not a position"*, then — after congratulating
+ourselves for moving that to chapter 06 — *"Vector and raster: your two kinds of layer"*. A better
+taxonomy is still a taxonomy.
+
+**So GST 101 is not discarded. It is demoted**, from *sequencing authority* to **coverage
+checklist**: it answers "does this course teach what the field considers core?" It does not get to
+order the chapters or name them. Those now come from evidence about how people voluntarily learn to
+make things.
 
 ---
 
@@ -14,30 +27,36 @@ added.
 
 | source | what it is | licence | what we may do |
 |---|---|---|---|
-| [UCGIS GIS&T Body of Knowledge](https://gistbok.ucgis.org/) | the field's authoritative curriculum taxonomy. Ten knowledge areas, 73 units, 26 of them "core"; begun 1997 as the Model Curricula project and now a living online resource | reference work | **check coverage against it.** It is a degree-programme taxonomy, not a shape to copy |
-| [FOSS4G GeoAcademy](https://github.com/FOSS4GAcademy) — GST 101–105 | the FOSS4G community's own curriculum: 35 hands-on labs, funded by the US Department of Labor, aligned to the Geospatial Technology Competency Model, maintained by the Spatial{Query} Lab at Texas A&M – Corpus Christi | **CC-BY 3.0** | **adapt, and borrow wording**, with attribution |
+| [FOSS4G GeoAcademy](https://github.com/FOSS4GAcademy) — GST 101–105 | the FOSS4G community's own curriculum: 35 hands-on labs, funded by the US Department of Labor, aligned to the Geospatial Technology Competency Model | **CC-BY 3.0** | **adapt, and borrow wording**, with attribution. Now used as the coverage checklist |
+| [#30DayMapChallenge](https://github.com/tjukanovt/30DayMapChallenge) | the community's own annual event, begun by Topi Tjukanov in 2019. One prompt a day through November; **over 50,000 maps posted** | **licence unverified — see below** | learn from the *sequence* and the *prompt grammar*. **Do not copy a prompt description** until the licence is checked |
+| [UCGIS GIS&T Body of Knowledge](https://gistbok.ucgis.org/) | the field's authoritative curriculum taxonomy. Ten knowledge areas, 73 units, 26 "core" | reference work | check coverage against it. A degree taxonomy, not a shape to copy |
 | [QGIS Training Manual](https://docs.qgis.org/latest/en/docs/training_manual/index.html) | the official practical course for QGIS — 20 modules | CC BY-**SA** 3.0 | learn from its sequencing; **do not adapt** — share-alike would spread into our MIT patches |
-| [Geocomputation with R](https://r.geocompx.org/) | the programmer-facing book. Lovelace, Nowosad and Muenchow | prose CC-BY-**NC-ND**, code CC0 | **cite and link only.** No adaptation of any kind |
+| [Geocomputation with R](https://r.geocompx.org/) | the programmer-facing book. Lovelace, Nowosad and Muenchow | prose CC-BY-**NC-ND**, code CC0 | **cite and link only** |
+| [Unfolding](http://unfoldingmaps.org/) | Till Nagel's Processing/Java map library, written explicitly for designers and artists. The closest structural precedent that exists | code BSD; docs unverified | learn from its tutorial *order*. Quote sparingly, with attribution |
 
-**GeoAcademy is the only one we may lean on as text**, which is what makes it the spine rather than
-merely the best of them. When wording is borrowed, it carries their
+**GeoAcademy remains the only source we lean on as text**, carrying their
 [attribution block](https://github.com/FOSS4GAcademy/GST101FOSS4GLabs/blob/master/Attribution_Block_for_Lab_Documents.md).
+The 30DayMapChallenge's day *names* ("Points", "Hexagons", "Raster") are short factual themes and
+are used here as evidence; its prompt **descriptions** are authored text and are quoted in this
+document only as evidence about sequencing. Before any of that wording reaches a shipped patch,
+**check the licence on tjukanovt/30DayMapChallenge.** This pack keeps a licence table precisely so
+that decision is never made casually.
 
 ### Standards, which are a different kind of authority
 
-These say what is *true* rather than how to teach it, and the libraries already conform to them:
+These say what is *true* rather than how to teach it, and the libraries already conform:
 
 | | |
 |---|---|
 | **OGC Simple Features** | the geometry model — Point, LineString, Polygon and their multi- forms. What NetTopologySuite implements, and therefore what a `Geometry` in a patch actually is |
-| **RFC 7946 (GeoJSON)** | including §4, which mandates WGS84 longitude and latitude. This is why VL.GeoJSON and VL.Mapsui agree about coordinates without an adapter |
+| **RFC 7946 (GeoJSON)** | including §4, which mandates WGS84 longitude and latitude. Why VL.GeoJSON and VL.Mapsui agree about coordinates without an adapter |
 | **EPSG registry** | the coordinate reference system codes. 4326 and 3857 are the two a web map lives between |
 
 ---
 
 ## The sequencing evidence
 
-Where each source puts the four things a beginner meets first:
+### The academic sources, which agree with each other
 
 | | data model | on screen | styling | **coordinate systems** |
 |---|---|---|---|---|
@@ -45,99 +64,199 @@ Where each source puts the four things a beginner meets first:
 | **QGIS Training Manual** | — | **Module 2** | Module 2.4 | **Module 6** |
 | **Geocomputation with R** | Ch 2 | Ch 9 | Ch 9 | **Ch 7** |
 
-**All three lead with the data model. Not one leads with coordinate systems.** The QGIS manual is
+All three lead with the data model. Not one leads with coordinate systems; the QGIS manual is
 explicit that CRS comes at Module 6, *after* students have mastered basic mapping.
 
-The invented outline opened with "a coordinate is not a position" — the most abstract and most
-off-putting lesson, at the door. It is now chapter 06.
+### The #30DayMapChallenge, which agrees about order and disagrees about framing
 
-**Where the three disagree, we follow QGIS**: coordinate systems come after the reader has a map on
-screen. Two reasons. A vvvv audience is visual and the reward loop is seeing something; and someone
-who has already been bitten by a projection is someone who will actually listen to the explanation.
-Geocomputation with R agrees by placing reprojection at chapter 7. GST 101 puts it at Lab 3, which
-suits an academic course where nobody leaves after week two.
+**Days 1, 2 and 3 are Points, Lines, Polygons — in 2023, 2024 and 2025 alike.** Projections land on
+day 19 (2025) and day 26 (2024). Choropleth on 13–16, and it is gone entirely from the 2025 list.
+Raster on 21–29.
+
+That is the **same content order the academic sources use.** The previous round's research was not
+wrong. One word per unit is:
+
+| | GST 101 Lab 2 | 30DMC day 1 |
+|---|---|---|
+| | *Spatial Data Models: vector vs raster* | **"Points"** — *"Map with point data. Focus on effective symbolization and density visualization."* |
+
+A taxonomy versus a thing to make. Identical subject matter, opposite doors — and the second one is
+what fifty thousand maps got made under, by people the rules explicitly welcome: *"Programming
+skills are not in any way a requirement to do the maps."*
+
+Counting the 2025 list by kind: 8 of 30 prompts are a geometry primitive or technique, 8 are an
+aesthetic constraint (*Analog, Minimal map, 10-minute map, Icons, Black, Makeover, Process, Places
+and their names*), 9 are a subject (*Earth, Air, Fire, Water, Urban, Transport, Boundaries…*), 3
+name a dataset, 2 are meta. **Almost none is "learn X".** A prompt teaches a technique while reading
+as a restriction; that is the whole trick.
+
+### The naming evidence, from inside the vvvv community
+
+| | [VL.TheBigBang](https://github.com/chkw-rks/VL.TheBigBang) (free, written) | [NODE Institute Beginner Class](https://thenodeinstitute.org/courses/vvvv-beginner-class/) (paid, live) |
+|---|---|---|
+| unit 1 | `Explanation 01. Types and IOBoxes` | "create your first visual compositions" |
+| 3D | chapter 9 of 45 | session 2 of 8 |
+| spreads / iteration | chapters 19–26 | session 4, *"Patterns in Motion: Iterating with Spreads & Lists"* |
+| first thing rendered | **chapter 8 of 45** | session 1 |
+
+Same community, same material, opposite naming — and the outcome-named one is the one people pay
+for. Every NODE session title is an artefact with the machinery demoted to the subtitle.
+
+**Rule taken from this:** *name a unit by what the reader ends up with; put the concept in the
+subtitle.* "Coordinate systems and distortion" is a topic. "Put the same country in five projections
+and watch Greenland eat Africa" is an outcome. The concept survives either way.
+
+### Two tiers, which is how every large creative-coding curriculum is arranged
+
+[The Coding Train](https://thecodingtrain.com/tracks) states it plainly: **Main Tracks** are
+"sequenced video tutorials that you can follow like a course syllabus"; **Side Tracks** "don't
+necessarily need to be watched in order". Rodenbröker: one *Essentials* course plus twenty
+interest-entry modules. The Gray Book: Courses / Tutorials / Examples.
+
+**Rule taken from this:** numbering is a *claim* that order matters, so it is spent only on the
+spine. Number everything and the numbers become noise — and a reader arriving at chapter 05 feels
+late, when the whole point is that they are not.
+
+### What a first unit looks like, converged across sources
+
+| source | the first thing the learner gets |
+|---|---|
+| [The Book of Shaders](https://thebookofshaders.com/02/) | a screen filled with one bright colour — text output is refused as *"an overcomplicated task for a first step"* |
+| [Unfolding](http://unfoldingmaps.org/) | six lines → the whole planet, draggable. No projection, no CRS, no data |
+| [p5.js](https://p5js.org/tutorials/) | "an interactive landscape" |
+| Coding Train, p5 track | five drawing lessons before the first variable; `mouseX` before `var` |
+| NODE Beginner Class | "your first visual compositions", session 1 of 8 |
+| VL.TheBigBang | Types and IOBoxes; nothing rendered until chapter 8 of 45 |
+| the Gray Book | **no first lesson at all** — it links out to YouTube |
+
+Distilled into the tests a spine chapter here must pass:
+
+1. **It renders in the first screenful.**
+2. **It is already running when opened** — a worked example, not a blank canvas
+   ([Sweller & Cooper 1985](https://files.eric.ed.gov/fulltext/EJ1161818.pdf); novices learn more
+   from studying a working artefact than from building one). vvvv gives this for free.
+3. **It has exactly one obvious knob**, and turning it *is* the lesson. Two readers turning the same
+   knob must get visibly different screenshots.
+4. **Its title names the picture, not the machinery.**
+5. **It contains no vocabulary lesson.** [Diátaxis](https://diataxis.fr/tutorials/): *"A tutorial is
+   not the place for explanation."* Link out to an `Explanation` patch.
+6. **It is finishable in five minutes and skippable without penalty.**
+7. **It ends by pointing at three different next things, not one** — Resnick's *wide walls*: *"It's
+   not enough to provide a single path from low floor to high ceiling."*
+
+### And the honest counterweight
+
+None of this is an argument against structure. Sweller says novices genuinely need worked examples
+rather than discovery. Rodenbröker, whose whole catalogue is outcome-named, still
+[defends drilling](https://trcc.timrodenbroeker.de/learning-to-code-essential-tips-for-beginners/):
+*"Question your motives. Do you want to learn how to code or do you just want to create an
+impressive image?"* **"Tutorial hell" is an argument against structure with no exit into independent
+making**, and the fix is fading and a Create stage, not the removal of scaffolding. That is what the
+prompt tier is for.
+
+Both *The Nature of Code* and *The Book of Shaders* also refuse, in writing, on page one, to be
+anyone's first book — and that refusal is exactly what earns them the right to skip fundamentals.
+This pack does the same, and points at VL.TheBigBang.
 
 ---
 
-## GST 101 as the spine, with what we skip and why
+## GST 101 as the coverage checklist
 
-**GST 101 — Introduction to Geospatial Technology**, read rather than skimmed:
+Still read rather than skimmed. The change is the last column: this now records **whether we cover
+it**, not **when**.
 
-| lab | what it actually teaches | us |
+| lab | what it actually teaches | covered? |
 |---|---|---|
 | **0** Getting to Know FOSS and FOSS4G | what open source is, OSGeo, installing QGIS | **skipped** — a vvvv reader already has their tool |
-| **1** GIS Application Paper | a writing assignment about a real-world GIS application | **skipped** — academic assessment |
-| **2** Spatial Data Models | vector vs raster; open a shapefile and a Landsat scene, add both to the map, notice vector layers arrive in a random colour | **chapter 01** |
-| **3** Coordinate Systems and Map Projections | EPSG codes; shape and area **distortion** across world projections; State Plane; UTM zones; datum | **chapter 06** |
-| **4** Displaying Geospatial Data | single symbol vs **categorised by attribute value**; layer order; renaming layers for the legend; composing a print layout | **chapters 04 and 05** |
-| **5** Creating Geospatial Data | digitising new features | **out of scope** — `Mapsui.Nts.Editing` is not wrapped |
+| **1** GIS Application Paper | a writing assignment | **skipped** — academic assessment |
+| **2** Spatial Data Models | vector vs raster; open a shapefile and a Landsat scene; notice vector layers arrive in a random colour | spine 01 (raster, as *"change how the world looks"*) and 02 (vector) |
+| **3** Coordinate Systems and Map Projections | EPSG codes; shape and area **distortion** across world projections; UTM; datum | **not yet, and blocked** — no reprojection node exists in the family |
+| **4** Displaying Geospatial Data | single symbol vs **categorised by attribute value**; layer order; legend naming | spine 02 partly; **the categorised half is blocked** — see gaps |
+| **5** Creating Geospatial Data | digitising | **out of scope** — `Mapsui.Nts.Editing` is not wrapped |
 | **6** Remote Sensing and Analysis | imagery interpretation | **out of scope** — another field |
-| **7** Basic Geospatial Analysis | buffers, overlays, selection | **belongs to VL.NetTopologySuite**, not to a drawing course |
+| **7** Basic Geospatial Analysis | buffers, overlays, selection | **belongs to VL.NetTopologySuite**, which has 8 of them |
 
-Two things this reading changed:
+Two observations from the original reading, both still load bearing:
 
-- **Lab 3 is not the abstraction I had planned.** It does not argue that longitude is not metres;
-  it puts the same country into several projections and has you *look* at what happens to its shape
-  and area. Concrete, visual, and reproducible in a patch.
-- **Lab 2's lesson is already on our screen and nobody has named it.** A tile layer *is* raster; a
-  feature layer *is* vector. Every existing help patch stacks both. Chapter 01 is mostly a matter
-  of pointing at what is already there.
+- **Lab 3 is not the abstraction it sounds like.** It does not argue that longitude is not metres;
+  it puts the same country into several projections and has you *look*. Concrete, visual, and
+  exactly what 30DMC day 19 asks for too. The sources agree; we simply cannot build it yet.
+- **Lab 2's lesson is already on our screen and nobody has named it.** That was true and led to the
+  wrong conclusion — that chapter 01 should be the naming. Naming what is on screen is an
+  *explanation*, and belongs after the tutorial, not as it.
 
 ---
 
 ## The chapters
 
-| | chapter | based on | exists |
+### The spine — four, ordered, each adding exactly one capability
+
+| | title | what it adds | packages |
 |---|---|---|---|
-| 01 | Vector and raster: your two kinds of layer | GST 101 Lab 2 | |
-| 02 | A feature is geometry plus attributes | Lab 2 / Lab 4 | |
-| 03 | Reading real data — files, and what their licences ask of you | Lab 2 / GST 103 | |
-| 04 | Drawing it: one style per geometry type | Lab 4 | **yes**, currently numbered `05` |
-| 05 | Stacking: order, bands and visible range | Lab 4 (layer order) | |
-| 06 | Coordinate systems and distortion | Lab 3 | |
-| 07 | Asking the map: picking | **no precedent** | |
-| 08 | Scale and the frame loop | **no precedent** | |
+| 01 | **Change how the world looks** | a map exists, and its appearance is a string you own | VL.Mapsui |
+| 02 | **Your own points, lines and polygons** | geometry you made, styled by type | + NTS |
+| 03 | **The map is just giving you coordinates** | `WorldToScreen` → draw anything you like on top | + NTS |
+| 04 | **Real data** | GeoJSON, from a file or from the network | + VL.GeoJSON |
 
-**The shipped chapter still carries its old number**, from the outline where drawing was fifth. It
-is renumbered when the chapters before it are written — renaming it now would leave its
-cross-references pointing at chapters that do not exist yet, which is worse than a number being
-briefly wrong.
+**01 uses one package, which the pack's own rule normally forbids.** The exemption and its reason
+are in `CLAUDE.md`; briefly, a course with a hole at chapter 1 is worse than a duplicated node.
 
-### The two with no precedent, and why that is honest rather than convenient
+**03 comes before 04 deliberately.** Unfolding puts `getScreenPosition` *before* its GeoJSON
+tutorial and says why: *"the easiest method to create a custom style is to draw the marker
+yourself."* That is the moment the map stops being a map and becomes a coordinate provider, and the
+reader returns to the visual language they already have. It is the strongest thing this stack can
+offer a creative coder, and making them read a file format first would be a strange choice.
 
-**07 (picking) and 08 (scale and the frame loop) appear in none of the sources.** That is not an
-oversight in the sources. A desktop GIS does not have these problems: it is not redrawing at sixty
-frames a second, and "what is under the cursor" is a built-in behaviour rather than something a
-user wires. They are ours because the host is a real-time visual programming environment, and they
-should be labelled as ours rather than presented as received wisdom.
+### The prompts — unnumbered, unordered, skippable
 
-Chapter 08 in particular exists because of a measurement nothing in the GIS literature would
-produce: with a thousand features of five hundred vertices each, the same downstream work costs
-**0.013 ms per frame** when the data arrives unchanged and **43 ms** when it is rebuilt each frame.
-That is a vvvv lesson wearing a GIS coat.
+Grammar copied from the 30DayMapChallenge: a **material restriction** or a **subject**, never
+"learn X". Tone copied from [Genuary](https://genuary.art/) (*"You don't have to follow the prompt
+exactly. Or even at all." / "It's fine to skip days."*) and Nodevember (*"a challenge, not a
+contest"*).
+
+First set, chosen so that every one is buildable with nodes that exist today:
+
+| prompt | after 30DMC | needs |
+|---|---|---|
+| **Two colours only** | 2024 day 22 | nothing new |
+| **Minimal map** | 2025 day 11 | nothing new |
+| **Live earthquakes** | *Fire* / *Time and space* | `HTTP Get` (ships with vvvv) + USGS GeoJSON, no key |
+| **Out of this world** | 2025 day 18 | procedural NTS geometry; **no basemap, no network** |
+| **Places and their names** | 2025 day 24 | `LabelStyle` |
 
 ---
 
 ## What the curriculum found in the libraries
 
-This pack has two jobs, and this is the second one: **checking the libraries against an outside
-standard finds gaps that using them does not.**
+The pack's second job: **checking the libraries against an outside standard finds gaps that using
+them does not.** The ranking is now by *how many prompts each gap blocks*, which counts things
+people actually chose to make.
 
-- **`GradientTheme` is not wrapped.** GST 101 Lab 4 teaches styling *categorised by an attribute
-  value* — a different colour per land-managing agency — and calls it a core skill. VL.Mapsui
-  wraps `ThemeStyle` as `StyleByGeometry`, which dispatches on geometry type, but nothing yet
-  dispatches on a **value**. A choropleth is not currently possible. That is a real hole, found by
-  reading a curriculum rather than by patching.
-- **Editing is not wrapped.** GST 101 Lab 5 is digitising; `Mapsui.Nts.Editing` is nine unwrapped
-  types. Deliberately out of scope for now, but the curriculum is why we know the size of the gap.
+| rank | missing | blocks |
+|---|---|---|
+| 1 | **`GradientTheme`** — colour driven by an attribute value | Polygons, Choropleth, Population, Heat, Urban, most thematic work. **Also first on the GST 101 list** (Lab 4 calls it core) — two independent sources agree, which is the strongest signal in this document |
+| 2 | **Reprojection** (`VL.ProjNet`) | Projections — a prompt in *every* year — plus *North is not always up* and *Antarctica*. Nothing in the four packages reprojects; `SphericalMercator` is used internally and never exposed |
+| 3 | **Image markers** (`SymbolType.Image`) | Icons. Needs `BitmapRegistry` |
+| 4 | **Layer opacity, basemap recolouring** | Vintage style, Black, most aesthetic prompts |
+| 5 | **Map as texture, and a transformable map layer** | the entire vvvv-native shader angle |
+
+**Gap 5 is a wall, and must not be promised in a chapter.** `PixelSpace.Draw` calls
+`canvas.SetMatrix(SKMatrix.Identity)`, discarding whatever transform the VL.Skia scene graph
+applied, and nothing in VL.Mapsui produces an `SKImage` or a texture. Whether rendering the *whole
+scene* to a texture still works is **unmeasured** — a measurement to take, not a claim to make.
+
+Also confirmed absent, so that no prompt quietly assumes them: convex hull, simplify, any
+elevation/DEM/raster reading, callouts, editing, and `LabelStyle.CollisionDetection` (measured
+inert — 763 px with and without).
 
 ---
 
 ## Using this document
 
-Before adding a chapter: find its row above, and if it has no row, say what it is based on or say
-plainly that it has none. A chapter with no source is not forbidden — 07 and 08 have none — but it
-should be a decision rather than an accident.
+Before adding a unit: decide whether it is **spine** or **prompt**, and say what it is based on. A
+unit with no source is allowed — several prompts have none, because a desktop GIS has neither a
+frame loop nor a cursor to ask — but that should be a stated decision rather than an accident.
 
-**The rule this pack exists for is separate and lives in `CLAUDE.md`:** one package → that
-package's own `help\`; two or more → here.
+Before naming it: **name the picture, not the machinery.**
+
+**The rule about where a patch lives, and its one exemption, are in `CLAUDE.md`.**

@@ -41,6 +41,46 @@ drawn, and ships every patch with the tile layer switched **off** so that openin
 not fetch anything you did not agree to. Those are not conveniences; they are what the policy asks
 for.
 
+### The basemaps `Tutorial 01` offers, and what each asks
+
+Every one was fetched and **looked at** on 2026-08-17 — a 200 and a plausible byte count is not
+proof, because an error tile is also a valid PNG.
+
+| paste this into `URL Template` | licence | put this on the `Attribution` pin |
+|---|---|---|
+| `https://tile.openstreetmap.org/{z}/{x}/{y}.png` | ODbL data, CC-BY-SA tiles | `© OpenStreetMap contributors` |
+| `https://tile.opentopomap.org/{z}/{x}/{y}.png` | CC-BY-SA 3.0 | `Map data: © OpenStreetMap contributors, SRTM \| Style: © OpenTopoMap (CC-BY-SA)` |
+| `https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png` | ODbL / CC-BY-SA | `© OpenStreetMap contributors \| CyclOSM` |
+| `https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2020_3857/default/g/{z}/{y}/{x}.jpg` | **CC BY-NC** — see below | `EOxCloudless 2020 by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2020)` |
+
+Three notes that cost an afternoon each if you meet them the hard way:
+
+- **s2cloudless is non-commercial.** Free for "academic research, educational materials, school and
+  university projects, NGO publications and humanitarian mapping, personal use"; anything
+  commercial needs an EOX licence. Shipping the URL is fine — what you *display* is your side of it.
+- **The `{s}` subdomain placeholder is not supported.** `XYZ` hands the template to BruTile, which
+  substitutes `{x}`, `{y}` and `{z}` and nothing else, so a provider's documented
+  `https://{s}.example.com/…` must have a real subdomain written in (`a.`) or be dropped. Some hosts
+  only answer on the subdomain form — `tile.openstreetmap.fr` presents a certificate for a different
+  name, and `tile-cyclosm.openstreetmap.fr` does not resolve at all.
+- **Placeholder order does not matter**, only presence. `…/{z}/{y}/{x}.jpg` works, which is why the
+  EOX row above is not a typo.
+
+### Two that work perfectly and are not allowed
+
+Both return a correct, good-looking tile. Neither may be used, and **that is the point of putting
+them here**: a request that succeeds tells you nothing about whether you were permitted to make it.
+
+- **CARTO** (Positron, Dark Matter, Voyager). Their own
+  [`LICENSE.md`](https://github.com/CartoDB/basemap-styles/blob/master/LICENSE.md): *"access to
+  CARTO's basemap tile services is restricted to CARTO enterprise customers and Non-Profit GRANTS
+  only and is not available for free public use."* The open licence covers the **style definitions**,
+  not the hosted tiles — an easy and expensive thing to misread.
+- **Esri World Imagery** via `server.arcgisonline.com`. The grant is *"the non-exclusive right to
+  use the World Imagery map to trace features and validate edits in the creation of vector data…
+  any and all other uses… remain subject to the terms and conditions set forth in the Esri Master
+  Agreement"*. A basemap in a tutorial is one of those other uses.
+
 Any other provider — Mapbox, Stadia, Thunderforest, a national service — has its own terms, its own
 key, and its own required credit. `XYZ` will point at any of them. Reading their terms is your
 part.

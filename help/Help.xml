@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Pack>
 	<!--
-		THE CHAPTERS ARE NUMBERED IN THE FILENAME, and that is a deliberate departure from the
-		convention the sibling libraries follow.
+		TWO TIERS, AND THE FILENAME SAYS WHICH.
 
-		In a library's help\, the patches are a flat set of HowTos that can be read in any order,
-		so numbering the files makes every gap look like a broken install and Help.xml does the
-		sequencing. Here the order is load bearing: chapter 05 assumes you know what a coordinate
-		is, and reading them out of order does not work. VL.ExtendedTutorials numbers its Math
-		series the same way, for the same reason - Explanation 01 Intro through 20 FPS Camera.
+		`Tutorial NN ` is the spine: ordered, numbered, each unit adding exactly one capability.
+		Numbering is a CLAIM that order matters, so it is spent only here.
 
-		Help.xml still carries the tags, and still groups the chapters into parts.
+		`Prompt ` is the library: unordered, unnumbered, skippable, no prerequisites. Numbering
+		these would make the numbers noise and make a reader arriving in the middle feel late -
+		when the entire point of the tier is that they are not.
+
+		The Coding Train states the same split in its own words: Main Tracks "you can follow like
+		a course syllabus", Side Tracks "don't necessarily need to be watched in order".
+
+		The prefixes extend vvvv's existing Explanation / HowTo / Example convention, which is
+		already three-quarters of Diataxis. `Tutorial` is the genre those three are missing.
+		tools\Test-VLPackage.ps1 checks the prefix, and checks this file against the disk in both
+		directions.
 	-->
-	<Topic title="Drawing data">
-		<VLDocument link="05 Drawing GeoJSON on a map.vl" tags="geojson,map,mapsui,read,parse,feature,nts,netTopologySuite,style,styleByGeometry,label,marker,wgs84,mercator,projection,integration,packages" />
+	<Topic title="The course">
+		<VLDocument link="Tutorial 01 Change how the world looks.vl" tags="map,mapsui,basemap,tile,xyz,url,template,style,appearance,attribution,licence,terrain,satellite,opentopomap,openstreetmap,cyclosm,sentinel,tutorial,spine,start,first" />
+		<VLDocument link="Tutorial 04 Real data.vl" tags="geojson,map,mapsui,read,parse,feature,nts,netTopologySuite,style,styleByGeometry,label,marker,wgs84,mercator,projection,integration,packages,tutorial,spine" />
 	</Topic>
 </Pack>

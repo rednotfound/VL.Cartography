@@ -22,10 +22,14 @@
                                        so the document parses while being quietly wrong
       4. no <ProjectDependency>        points at a .csproj nobody installing this will have
       5. family packages pinned 0.0.0  or a chapter demands one exact version forever
-      6. THE CROSS-PACKAGE RULE        a chapter needing one library belongs in that library
-      7. Help.xml agrees with disk     in both directions
-      8. nuspec                        ships the .vl at root, ships NO lib\, declares the family
-      9. no stray map tiles            a cache once wrote {z}\{x}\{y}.png into a repository
+      6. THE CROSS-PACKAGE RULE        a unit needing one library belongs in that library - EXCEPT
+                                       a spine `Tutorial `, which may need one when the course's
+                                       sequence requires it. A `Prompt ` gets no exemption
+      7. genre prefix                  Tutorial / Prompt / Explanation / HowTo / Example. The
+                                       filename is how a reader tells the spine from the library
+      8. Help.xml agrees with disk     in both directions
+      9. nuspec                        ships the .vl at root, ships NO lib\, declares the family
+     10. no stray map tiles            a cache once wrote {z}\{x}\{y}.png into a repository
 
 .EXAMPLE
     .\tools\Test-VLPackage.ps1
@@ -42,8 +46,13 @@ $VlFile   = Join-Path $RepoRoot "$PackName.vl"
 $Nuspec   = Join-Path $RepoRoot "$PackName.nuspec"
 $HelpDir  = Join-Path $RepoRoot 'help'
 
-# The libraries this pack teaches. A chapter naming two or more of these is what belongs here.
+# The libraries this pack teaches. A unit naming two or more of these is what belongs here.
 $Family = @('VL.Mapsui', 'VL.GeoJSON', 'VL.NetTopologySuite')
+
+# The filename tells a reader which tier a unit is in before they open it, so it is validated.
+# `Tutorial ` is the ordered spine; `Prompt ` is the unordered library. The other three are vvvv's
+# own convention, carried over from the sibling packages.
+$Genres = @('Tutorial ', 'Prompt ', 'Explanation ', 'HowTo ', 'Example ')
 
 $errors = [System.Collections.Generic.List[string]]::new()
 function Fail([string]$message) { $script:errors.Add($message) }
@@ -155,12 +164,27 @@ foreach ($chapter in $chapters) {
         ForEach-Object { [pscustomobject]@{ Name = $_.Groups[1].Value; Version = $_.Groups[2].Value } })
     $fromFamily = @($declared | Where-Object { $_.Name -in $Family })
 
-    # THE RULE. A chapter that needs one library belongs in that library's own help\, where its
+    # 7. The filename declares the tier. Checked before the cross-package rule, because the
+    # exemption below is keyed off it and an unrecognised prefix must not buy one by accident.
+    $genre = @($Genres | Where-Object { $chapter.Name.StartsWith($_, [StringComparison]::Ordinal) }) |
+        Select-Object -First 1
+    if (-not $genre) {
+        Fail "help\$($chapter.Name) does not start with one of: $(($Genres | ForEach-Object { $_.Trim() }) -join ', '). The filename is how a reader tells the ordered spine from the skippable library."
+    }
+
+    # 6. THE RULE. A unit that needs one library belongs in that library's own help\, where its
     # users find it without installing anything else.
+    #
+    # The exemption: a spine `Tutorial ` may need one package. Every unit with a payoff inside five
+    # minutes uses VL.Mapsui alone, and a course with a hole at chapter 1 is worse than a duplicated
+    # node - this pack declares all three packages, so a single-package unit here is duplication,
+    # never breakage. A `Prompt ` gets no exemption: it is not carrying the sequence.
     if ($fromFamily.Count -eq 0) {
         Fail "help\$($chapter.Name) declares none of $($Family -join ', '), so it teaches nothing this pack is for."
+    } elseif ($fromFamily.Count -eq 1 -and $genre -ne 'Tutorial ') {
+        Fail "help\$($chapter.Name) needs only $($fromFamily[0].Name). A unit needing ONE package belongs in that package's own help\; this pack is for the ones that need two or more. Only a spine 'Tutorial ' is exempt."
     } elseif ($fromFamily.Count -eq 1) {
-        Fail "help\$($chapter.Name) needs only $($fromFamily[0].Name). A chapter needing ONE package belongs in that package's own help\; this pack is for the ones that need two or more."
+        Warn "$($chapter.Name) needs only $($fromFamily[0].Name) - allowed as spine, but its description must say why"
     }
 
     # Pinned to the sentinel, or the chapter demands one exact version of a sibling forever. vvvv
@@ -171,12 +195,13 @@ foreach ($chapter in $chapters) {
 
     if ($errors.Count -ne $before) { $chapterProblems++ }
 }
-if ($chapters.Count -eq 0) { Warn "no chapters yet" }
+if ($chapters.Count -eq 0) { Warn "no units yet" }
 elseif ($chapterProblems -eq 0) {
-    Ok "$($chapters.Count) chapter(s): each needs two or more of the family, all pinned 0.0.0"
+    $spine = @($chapters | Where-Object { $_.Name.StartsWith('Tutorial ', [StringComparison]::Ordinal) }).Count
+    Ok "$($chapters.Count) unit(s), $spine in the spine: genre prefixes valid, cross-package rule met, all pinned 0.0.0"
 }
 
-# 7. Help.xml agrees with what is on disk, in both directions -----------------
+# 8. Help.xml agrees with what is on disk, in both directions -----------------
 $helpXmlPath = Join-Path $HelpDir 'Help.xml'
 if (-not (Test-Path $helpXmlPath)) {
     if ($chapters.Count -gt 0) { Fail "help\Help.xml is missing, so the chapters ship unordered and untagged." }
@@ -198,7 +223,7 @@ if (-not (Test-Path $helpXmlPath)) {
     if ($indexProblems -eq 0) { Ok "Help.xml lists exactly the $($onDisk.Count) chapter(s) on disk" }
 }
 
-# 8. nuspec -------------------------------------------------------------------
+# 9. nuspec -------------------------------------------------------------------
 [xml]$nu = Get-Content $Nuspec -Raw
 $pkg      = $nu.DocumentElement
 $files    = @(Get-Child (@(Get-Child $pkg 'files') | Select-Object -First 1) 'file')
@@ -221,7 +246,7 @@ if ($missing) {
     Fail "$PackName.nuspec does not declare $($missing -join ', '), so installing the pack would not bring what the chapters import."
 } else { Ok "nuspec declares all $($Family.Count) libraries the chapters teach" }
 
-# 9. stray map tiles ----------------------------------------------------------
+# 10. stray map tiles ---------------------------------------------------------
 $strays = @(Get-ChildItem $RepoRoot -Recurse -File -Filter *.png -ErrorAction SilentlyContinue |
     Where-Object { $_.FullName -match '\\\d+\\\d+\\\d+\.png$' })
 if ($strays) {

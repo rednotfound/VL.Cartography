@@ -23,11 +23,22 @@ so the package has something to contribute.
 ## The rule this repository exists for
 
 > **A patch that needs ONE package belongs in that package's own `help\`. A patch that needs TWO
-> OR MORE belongs here.**
+> OR MORE belongs here — *except* a spine `Tutorial`, which may need one package when the course's
+> sequence requires it, and must say why in its own description.**
 
 Both halves are enforced. `tools\Test-VLPackage.ps1` here fails a chapter that names only one
-family package; vl-mapsui's fails a help patch that names a foreign `VL.*` one. Neither is a
-convention to remember.
+family package **unless its filename starts `Tutorial `**; vl-mapsui's fails a help patch that names
+a foreign `VL.*` one. Neither is a convention to remember.
+
+**The exemption exists because a course with a hole at chapter 1 is worse than a duplicated node.**
+Every unit with a payoff inside five minutes — a world you can drag, a basemap you can restyle, the
+longitude under the cursor — needs VL.Mapsui and nothing else. The rule was written for a
+*library's* `help\`, where a foreign dependency opens red for whoever installed that library alone.
+**This pack declares all three packages, so a single-package patch here is duplication, never
+breakage** — a far smaller cost than sending a beginner elsewhere for lesson one, which is exactly
+how the Gray Book loses people: it has no first lesson, it links out to YouTube.
+
+The exemption is narrow on purpose. **A `Prompt` gets none.**
 
 **Why it matters:** everything under a library's `help\` is packed, so a patch needing a package
 that library does not depend on opens red for anyone who installed it alone. And the cure is never
@@ -67,31 +78,50 @@ The ones that bite hardest here:
 5. **Validate before committing, in a separate step.** A check whose result arrives after the push
    is not a gate.
 
-## Before adding a chapter, read `docs/CURRICULUM.md`
+## Before adding a unit, read `docs/CURRICULUM.md`
 
-**The course order is derived, not invented** — the first outline was invented and got it backwards,
-opening with coordinate systems when all three authoritative sources put the data model first and
-none of them leads with CRS. `docs/CURRICULUM.md` carries the sources, their licences, the
-sequencing evidence, and what we deliberately skip.
+**The order is derived, not invented — and it has been corrected twice.** The first outline was
+invented outright. The second was derived from FOSS4G GeoAcademy's GST 101 and still put a
+vocabulary lesson at the door, because GST 101 is a graded university course and its reader cannot
+leave. `docs/CURRICULUM.md` carries the sources, their licences, the evidence, and both corrections.
 
-Two things from it that constrain the work:
+Four things from it that constrain the work:
 
+- **GST 101 is the coverage checklist, not the sequence.** It answers "do we teach what the field
+  considers core?" It does not name or order the units.
+- **Name a unit by what the reader ends up with; put the concept in the subtitle.** The evidence is
+  in-community and free: VL.TheBigBang opens on `Explanation 01. Types and IOBoxes` and renders
+  nothing until chapter 8 of 45; the NODE Institute's paid beginner class opens on "create your
+  first visual compositions" and is in 3D by session 2.
 - **Only [FOSS4G GeoAcademy](https://github.com/FOSS4GAcademy) may be borrowed from as text** —
-  CC-BY 3.0, attribution required. The QGIS Training Manual is CC BY-**SA** and would spread
-  share-alike into our MIT patches; Geocomputation with R is CC-BY-**NC-ND** and may only be cited.
-- **A chapter with no source is allowed but must say so.** Chapters 07 and 08 have none, because a
-  desktop GIS has neither a frame loop nor a cursor to ask. That should be a stated decision rather
-  than an accident.
+  CC-BY 3.0, attribution required. QGIS Training Manual is CC BY-**SA** and would spread share-alike
+  into our MIT patches; Geocomputation with R is CC-BY-**NC-ND** and may only be cited.
+  **The 30DayMapChallenge's licence is unverified** — its day *names* are used as evidence here, but
+  check before any prompt description reaches a shipped patch.
+- **A unit with no source is allowed but must say so.** Several prompts have none, because a desktop
+  GIS has neither a frame loop nor a cursor to ask. A stated decision, not an accident.
 
-## Chapters are numbered in the filename
+## Two tiers, and the filename says which
 
-A departure from the sibling libraries, and deliberate. In a library's `help\` the patches are a
-flat set of HowTos readable in any order, so numbering files makes every gap look like a broken
-install and `Help.xml` does the sequencing. **Here the order is load bearing.**
-VL.ExtendedTutorials numbers its Math series the same way — `Explanation 01 Intro` through
-`20 FPS Camera` — for the same reason.
+```
+help\Tutorial 01 ….vl     the spine. Ordered, numbered, each adds exactly one capability
+help\Prompt ….vl          unordered, unnumbered, skippable, no prerequisites
+```
 
-`Help.xml` still carries the tags and groups chapters into parts, and the validator checks it
+**Numbering is a claim that order matters, so it is spent only on the spine.** Number everything and
+the numbers become noise, and a reader arriving at unit 05 feels late — when the entire point of the
+prompt tier is that they are not. [The Coding Train](https://thecodingtrain.com/tracks) says the same
+in its own words: Main Tracks "you can follow like a course syllabus", Side Tracks "don't necessarily
+need to be watched in order".
+
+A **prompt** is phrased as a permission, not an instruction: a material restriction ("two colours
+only") or a subject ("out of this world"), never "learn X". Tone from Genuary — *"You don't have to
+follow the prompt exactly. Or even at all."*
+
+The prefixes extend vvvv's existing `Explanation` / `HowTo` / `Example` convention, which is already
+three-quarters of Diátaxis. `Tutorial` is the genre Diátaxis says those three are missing.
+
+`Help.xml` carries the tags and groups the units into the two tiers, and the validator checks it
 against the disk in both directions.
 
 ## The dev loop, and the one step that is not optional
