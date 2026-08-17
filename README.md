@@ -40,7 +40,7 @@ prerequisite and no completion.
 > *Two colours only* · *Minimal map* · *Live earthquakes* · *Out of this world* ·
 > *Places and their names*
 
-**Only Tutorial 04 exists so far.**
+**Tutorials 01 and 04 exist so far.**
 
 ### Why 03 comes before 04
 

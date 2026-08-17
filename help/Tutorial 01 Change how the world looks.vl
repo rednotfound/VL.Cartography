@@ -17,7 +17,7 @@
       </p:NodeReference>
       <Patch Id="T1yChjTcVpcQLJ4rxMEL44">
         <Canvas Id="VxYLn5bECvkjhyGerEE3sc" CanvasType="Group">
-          <Pad Id="VaZNqihOnpwz6dORWEdpu0" Bounds="60,30,620,160" ShowValueBox="true" isIOBox="true" Value="01 - Change how the world looks.&#xD;&#xA;&#xD;&#xA;ONE KNOB. Everything this map is made of - every road, every coastline, every colour - arrives as&#xD;&#xA;small square pictures from a server, and WHICH server is the string in URL Template. Change it and&#xD;&#xA;the whole world changes appearance. Nothing else in this patch has to move.&#xD;&#xA;&#xD;&#xA;Switch Enabled on first. It starts off because opening a document in vvvv RUNS it, and a map that&#xD;&#xA;fetched the moment you opened it would give you no chance to decline.&#xD;&#xA;&#xD;&#xA;PASTE ANY OF THESE OVER THE URL, one at a time, and put the credit next to it on Attribution:&#xD;&#xA;&#xD;&#xA;  https://tile.opentopomap.org/{z}/{x}/{y}.png&#xD;&#xA;      Map data: (c) OpenStreetMap contributors, SRTM | Style: (c) OpenTopoMap (CC-BY-SA)&#xD;&#xA;&#xD;&#xA;  https://tile.openstreetmap.org/{z}/{x}/{y}.png&#xD;&#xA;      (c) OpenStreetMap contributors&#xD;&#xA;&#xD;&#xA;  https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png&#xD;&#xA;      (c) OpenStreetMap contributors | CyclOSM          (zoom in - it is built for street level)&#xD;&#xA;&#xD;&#xA;  https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2020_3857/default/g/{z}/{y}/{x}.jpg&#xD;&#xA;      EOxCloudless 2020 by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2020)&#xD;&#xA;&#xD;&#xA;Look at that last one twice. The placeholders are in a different ORDER - z, y, x - and it still&#xD;&#xA;works, because only their presence matters, not their arrangement. It is also a photograph rather&#xD;&#xA;than a drawing, which is a difference you can see and nobody has to name for you.&#xD;&#xA;&#xD;&#xA;ATTRIBUTION IS A PIN, NOT AN AFTERTHOUGHT. Almost every tile service requires credit ON THE MAP,&#xD;&#xA;and a layer carrying none contributes nothing to the Attribution widget. Filling it in is the&#xD;&#xA;difference between complying and appearing to.&#xD;&#xA;&#xD;&#xA;TWO BASEMAPS THAT WORK PERFECTLY AND ARE NOT ALLOWED, which is the more useful lesson: CARTO&apos;s&#xD;&#xA;(their own licence restricts the tile service to enterprise customers) and Esri&apos;s World Imagery&#xD;&#xA;(granted only for tracing features). Both return a correct, good-looking tile if you ask.&#xD;&#xA;A REQUEST THAT SUCCEEDS TELLS YOU NOTHING ABOUT WHETHER YOU WERE ALLOWED TO MAKE IT.&#xD;&#xA;&#xD;&#xA;WHAT TO WATCH:&#xD;&#xA;  Layers Built  should reach 1 and stay. It counts rebuilds. If it climbs frame after frame,&#xD;&#xA;                CLOSE VVVV - every rebuild starts a fresh round of tile requests, and that once&#xD;&#xA;                exhausted a machine of ephemeral ports and took a home network down.&#xD;&#xA;  Cache Status  where the tiles are kept, and how much. Only tiles you actually looked at are&#xD;&#xA;                stored, which is what OpenStreetMap&apos;s tile policy asks for.&#xD;&#xA;&#xD;&#xA;THIS PATCH USES ONE PACKAGE, VL.Mapsui, which is normally a reason to live in that package&apos;s own&#xD;&#xA;help folder rather than here. It is the exemption written into this pack&apos;s rules: a course with a&#xD;&#xA;hole at chapter 1 is worse than a node appearing in two places.&#xD;&#xA;&#xD;&#xA;WHERE TO GO NEXT - three different directions, no order:&#xD;&#xA;  Tutorial 02        put your own shapes on it&#xD;&#xA;  Prompt Two colours only     how little can a map be made of and still read?&#xD;&#xA;  Prompt Out of this world    no basemap at all. Invent the place.">
+          <Pad Id="VaZNqihOnpwz6dORWEdpu0" Bounds="60,30,620,160" ShowValueBox="true" isIOBox="true" Value="01 - Change how the world looks.&#xD;&#xA;&#xD;&#xA;ONE KNOB, AND IT IS AN INTEGER. Everything this map is made of - every road, every coastline, every&#xD;&#xA;colour - arrives as small square pictures from a server. WHICH server is a preset, and Basemap picks&#xD;&#xA;it. Turn it and the whole world changes appearance. Nothing else in this patch has to move.&#xD;&#xA;&#xD;&#xA;  0  OpenTopoMap     contours and hillshade&#xD;&#xA;  1  OpenStreetMap   the one everybody knows&#xD;&#xA;  2  CyclOSM         built for street level - zoom IN before judging this one&#xD;&#xA;  3  Satellite       Sentinel-2, a whole year with the clouds taken out&#xD;&#xA;  4  Night lights    NASA Black Marble. Cities are the only thing left&#xD;&#xA;  5  Terrain Light   almost nothing: land, water, relief&#xD;&#xA;&#xD;&#xA;Switch Enabled on first. It starts off because opening a document in vvvv RUNS it, and a map that&#xD;&#xA;fetched the moment you opened it would give you no chance to decline.&#xD;&#xA;&#xD;&#xA;Out-of-range is safe: Switch is built on GetSlice, which wraps. Type 9 and you get preset 3.&#xD;&#xA;&#xD;&#xA;THE CREDIT TRAVELS WITH THE TILES, and that is the reason for the second Switch. Almost every tile&#xD;&#xA;service requires credit ON THE MAP, and a layer carrying none contributes nothing to the Attribution&#xD;&#xA;widget. Two Switches on one Index means the credit cannot be left behind on the wrong basemap -&#xD;&#xA;which is easy to do, entirely invisible, and turns complying into appearing to.&#xD;&#xA;&#xD;&#xA;If you add a seventh preset, ADD IT TO BOTH. A missing pin gives an empty string in silence. When a&#xD;&#xA;list gets long enough for that to be a real risk, the answer is a record with a Url field and an&#xD;&#xA;Attribution field, so the two cannot be separated at all - VL.Mapsui&apos;s HowTo Draw many features&#xD;&#xA;builds one.&#xD;&#xA;&#xD;&#xA;TWO BASEMAPS THAT WORK PERFECTLY AND ARE NOT ALLOWED, which is the more useful lesson: CARTO&apos;s&#xD;&#xA;(their own licence restricts the tile service to enterprise customers) and Esri&apos;s World Imagery&#xD;&#xA;(granted only for tracing features). Both return a correct, good-looking tile if you ask. A REQUEST&#xD;&#xA;THAT SUCCEEDS TELLS YOU NOTHING ABOUT WHETHER YOU WERE ALLOWED TO MAKE IT.&#xD;&#xA;&#xD;&#xA;Presets 3, 4 and 5 come from EOX&apos;s demo service, which rate-limits and offers no guarantee. Being a&#xD;&#xA;good guest is why the cache below matters.&#xD;&#xA;&#xD;&#xA;WHAT TO WATCH:&#xD;&#xA;  Layers Built  should go up by ONE each time you change the preset, then stop. It counts rebuilds.&#xD;&#xA;                If it climbs frame after frame without you touching anything, CLOSE VVVV - every&#xD;&#xA;                rebuild starts a fresh round of tile requests, and that once exhausted a machine of&#xD;&#xA;                ephemeral ports and took a home network down.&#xD;&#xA;  Cache Status  where tiles are kept, and how much. Each basemap now gets its OWN folder in there.&#xD;&#xA;                It did not until 2026-08-17, and the bug was found by this very patch: with one&#xD;&#xA;                shared folder the second basemap you picked never fetched anything, because the&#xD;&#xA;                first one&apos;s tiles were already sitting under the same {zoom}/{x}/{y} name. Changing&#xD;&#xA;                the preset appeared to do nothing at all, and every status pin said it had worked.&#xD;&#xA;&#xD;&#xA;THIS PATCH USES ONE PACKAGE, VL.Mapsui, which is normally a reason to live in that package&apos;s own&#xD;&#xA;help folder rather than here. It is the exemption written into this pack&apos;s rules: a course with a&#xD;&#xA;hole at chapter 1 is worse than a node appearing in two places.&#xD;&#xA;&#xD;&#xA;WHERE TO GO NEXT - three different directions, no order:&#xD;&#xA;  Tutorial 02                 put your own shapes on it&#xD;&#xA;  Prompt Two colours only     how little can a map be made of and still read?&#xD;&#xA;  Prompt Out of this world    no basemap at all. Invent the place.">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
@@ -26,16 +26,101 @@
               <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
             </p:ValueBoxSettings>
           </Pad>
-          <Pad Id="RLpAbpo7mNE2DqvCX5EEBI" Comment="URL Template" Bounds="-660,340,640,15" ShowValueBox="true" isIOBox="true" Value="https://tile.opentopomap.org/{z}/{x}/{y}.png">
+          <Pad Id="I2JQYurLjzub03mQOSqnjh" Comment="Basemap" Bounds="-1500,300,40,26" ShowValueBox="true" isIOBox="true" Value="0">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="Integer32" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="OhCfZx0ay0ZVrBEQkUo3Tl" Comment="OpenTopoMap" Bounds="-1500,340,700,15" ShowValueBox="true" isIOBox="true" Value="https://tile.opentopomap.org/{z}/{x}/{y}.png">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
-          <Pad Id="TcGRKPbSPuBuztmr9GW8Ep" Comment="Attribution" Bounds="-660,375,640,15" ShowValueBox="true" isIOBox="true" Value="Map data: (c) OpenStreetMap contributors, SRTM | Style: (c) OpenTopoMap (CC-BY-SA)">
+          <Pad Id="LZfUNhCWTQ6hEFGWTic8qp" Comment="OpenTopoMap credit" Bounds="-760,340,700,15" ShowValueBox="true" isIOBox="true" Value="Map data: (c) OpenStreetMap contributors, SRTM | Style: (c) OpenTopoMap (CC-BY-SA)">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="TypeFlag" Name="String" />
             </p:TypeAnnotation>
           </Pad>
+          <Pad Id="JsLxwIAgA4G7CIzDPIE84R" Comment="OpenStreetMap" Bounds="-1500,366,700,15" ShowValueBox="true" isIOBox="true" Value="https://tile.openstreetmap.org/{z}/{x}/{y}.png">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="UfaicXTqb4MkHZAkLPrGa1" Comment="OpenStreetMap credit" Bounds="-760,366,700,15" ShowValueBox="true" isIOBox="true" Value="(c) OpenStreetMap contributors">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="NfLolJW5Xd7dkZPrM2m34J" Comment="CyclOSM" Bounds="-1500,392,700,15" ShowValueBox="true" isIOBox="true" Value="https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="CookbTEnt0nO3uRhEOPReJ" Comment="CyclOSM credit" Bounds="-760,392,700,15" ShowValueBox="true" isIOBox="true" Value="(c) OpenStreetMap contributors | CyclOSM">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="Qa88xQk1UtvN0vvM4Y2CwL" Comment="Satellite" Bounds="-1500,418,700,15" ShowValueBox="true" isIOBox="true" Value="https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2020_3857/default/g/{z}/{y}/{x}.jpg">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="AKXiy6oHRdAgKi13gnGU4C" Comment="Satellite credit" Bounds="-760,418,700,15" ShowValueBox="true" isIOBox="true" Value="Sentinel-2 cloudless 2020 by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2020)">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="JwQXqVVLEtCn7dNvdZ1Ian" Comment="Night lights" Bounds="-1500,444,700,15" ShowValueBox="true" isIOBox="true" Value="https://tiles.maps.eox.at/wmts/1.0.0/blackmarble_3857/default/g/{z}/{y}/{x}.jpg">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="DfrGPdgOgTcaB5ltgCLshX" Comment="Night lights credit" Bounds="-760,444,700,15" ShowValueBox="true" isIOBox="true" Value="Black Marble { (c) NASA } | Rendering (c) EOX">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="BsWe5eVbawrbWSheuDhQdx" Comment="Terrain Light" Bounds="-1500,470,700,15" ShowValueBox="true" isIOBox="true" Value="https://tiles.maps.eox.at/wmts/1.0.0/terrain-light_3857/default/g/{z}/{y}/{x}.jpg">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Pad Id="EzAZIkmAJndDEZLVozylHX" Comment="Terrain Light credit" Bounds="-760,470,700,15" ShowValueBox="true" isIOBox="true" Value="Terrain Light { Data (c) OpenStreetMap contributors and others, Rendering (c) EOX }">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+          </Pad>
+          <Node Bounds="-1500,510,85,19" Id="R9sMocPdBD7zAEOjv5R79c">
+            <p:NodeReference LastCategoryFullName="Control" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Switch" />
+              <CategoryReference Kind="Category" Name="Control" NeedsToBeDirectParent="true" />
+            </p:NodeReference>
+            <Pin Id="VdIsITkKrRT0RCeBkqjIhZ" Name="Index" Kind="InputPin" />
+            <Pin Id="OJ4PsgMt6xgiqM67eDSWkp" Name="Input" Kind="InputPin" />
+            <Pin Id="AHWPVSVscAkrJ3rgRsfJDJ" Name="Input 2" Kind="InputPin" />
+            <Pin Id="Gx2aKjJ7o8ccEdndxWoAO8" Name="Input 3" Kind="InputPin" />
+            <Pin Id="SxhBaBVfFEYjEQPIpfJxco" Name="Input 4" Kind="InputPin" />
+            <Pin Id="UEJF2dnUpq9wS0OVv8rR0G" Name="Input 5" Kind="InputPin" />
+            <Pin Id="De1mNgdvzW9UY4HzButZuq" Name="Input 6" Kind="InputPin" />
+            <Pin Id="DenzBTDo2RVqsTVeiCdri6" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="-760,510,85,19" Id="EnMRxZHfQ7ZUkLjGSMYEqg">
+            <p:NodeReference LastCategoryFullName="Control" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Switch" />
+              <CategoryReference Kind="Category" Name="Control" NeedsToBeDirectParent="true" />
+            </p:NodeReference>
+            <Pin Id="HSKOyvjZzd0z1Uv0Z0WdtQ" Name="Index" Kind="InputPin" />
+            <Pin Id="MrapDU3JJ7G1TMwJeFQx1D" Name="Input" Kind="InputPin" />
+            <Pin Id="Vr7QuyjTZ7o7qt7cgE6nnM" Name="Input 2" Kind="InputPin" />
+            <Pin Id="IZIps3OtQlk22PEnoxnarG" Name="Input 3" Kind="InputPin" />
+            <Pin Id="UF0fhEmXA6uYLG0dHwXYrH" Name="Input 4" Kind="InputPin" />
+            <Pin Id="LY8BwNPquaEVPaMFCHLgzm" Name="Input 5" Kind="InputPin" />
+            <Pin Id="LoyHHiAw7ml3Fj4H2dFB8v" Name="Input 6" Kind="InputPin" />
+            <Pin Id="PEuDQWv92CGOnbCniJiAcZ" Name="Output" Kind="OutputPin" />
+          </Node>
           <Pad Id="UnaIkq8cPr0a4UZQVn7ji7" Comment="Enabled" Bounds="79,280,35,35" ShowValueBox="true" isIOBox="true" Value="false">
             <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
               <Choice Kind="ImmutableTypeFlag" Name="Boolean" />
@@ -57,8 +142,8 @@
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="ProcessAppFlag" Name="XYZ" />
             </p:NodeReference>
-            <Pin Id="IknN00apY59P6mzJ8F27p1" Name="URL Template" Kind="InputPin" />
-            <Pin Id="VfAGejh10lh3rnlpsxp72u" Name="Attribution" Kind="InputPin" />
+            <Pin Id="KWgTPHKIPtubhQD0fnFUXq" Name="URL Template" Kind="InputPin" />
+            <Pin Id="JgZqSdsWPE9ZAPR3thK41V" Name="Attribution" Kind="InputPin" />
             <Pin Id="Usi9xynIVqJWvRhEvGVOYQ" Name="Enabled" Kind="InputPin" />
             <Pin Id="ARy89W2GJw4s60rzwfmBsV" Name="Cache" Kind="InputPin" />
             <Pin Id="VE109xy4WqBycyAwxMeCrD" Name="Result" Kind="OutputPin" />
@@ -226,8 +311,22 @@
           <Fragment Id="FjiroYIuFc7C6Eo74EFsKw" Patch="Qn1Yqox3GN8OqwchBUvODO" Enabled="true" />
           <Fragment Id="I4BnpGUL4mYEGtIdqDHclf" Patch="OFfMGxxvZQSpMkYjxF7dnh" Enabled="true" />
         </ProcessDefinition>
-        <Link Id="D07egLuHSZugWT59CZ4XxL" Ids="RLpAbpo7mNE2DqvCX5EEBI,IknN00apY59P6mzJ8F27p1" />
-        <Link Id="Gp4NNZZ8uAp9eaD4vkRztL" Ids="TcGRKPbSPuBuztmr9GW8Ep,VfAGejh10lh3rnlpsxp72u" />
+        <Link Id="DChkplHxRIQ7ue4e7Lc0SS" Ids="OhCfZx0ay0ZVrBEQkUo3Tl,OJ4PsgMt6xgiqM67eDSWkp" />
+        <Link Id="RLZ2BtXPyBr4CwFqUuhOO8" Ids="LZfUNhCWTQ6hEFGWTic8qp,MrapDU3JJ7G1TMwJeFQx1D" />
+        <Link Id="JeFeGQvzQ72capRlhXhjNW" Ids="JsLxwIAgA4G7CIzDPIE84R,AHWPVSVscAkrJ3rgRsfJDJ" />
+        <Link Id="CB81s1Si0zidfQTqt5guig" Ids="UfaicXTqb4MkHZAkLPrGa1,Vr7QuyjTZ7o7qt7cgE6nnM" />
+        <Link Id="MIzAJgwEJ7ViXJRpRUiMNK" Ids="NfLolJW5Xd7dkZPrM2m34J,Gx2aKjJ7o8ccEdndxWoAO8" />
+        <Link Id="MQa44GYEYWap9B2vsBJzU7" Ids="CookbTEnt0nO3uRhEOPReJ,IZIps3OtQlk22PEnoxnarG" />
+        <Link Id="KSMoOBB6tdwty53oAIhCzb" Ids="Qa88xQk1UtvN0vvM4Y2CwL,SxhBaBVfFEYjEQPIpfJxco" />
+        <Link Id="DE0OciLt5qsGKUhCfgNr9j" Ids="AKXiy6oHRdAgKi13gnGU4C,UF0fhEmXA6uYLG0dHwXYrH" />
+        <Link Id="Ex9scsnBiUfuYjifZtSBX5" Ids="JwQXqVVLEtCn7dNvdZ1Ian,UEJF2dnUpq9wS0OVv8rR0G" />
+        <Link Id="AyFMyXjl3f77V0iR639Mei" Ids="DfrGPdgOgTcaB5ltgCLshX,LY8BwNPquaEVPaMFCHLgzm" />
+        <Link Id="Q1V9BgIslvFObWWDtwsY36" Ids="BsWe5eVbawrbWSheuDhQdx,De1mNgdvzW9UY4HzButZuq" />
+        <Link Id="AwXlBcLnpTOh9v4IT2KOho" Ids="EzAZIkmAJndDEZLVozylHX,LoyHHiAw7ml3Fj4H2dFB8v" />
+        <Link Id="Lci5HKDFOp1xS5t86f0u9E" Ids="I2JQYurLjzub03mQOSqnjh,VdIsITkKrRT0RCeBkqjIhZ" />
+        <Link Id="HyV3wXxVH1LPkEZj0iOLxD" Ids="I2JQYurLjzub03mQOSqnjh,HSKOyvjZzd0z1Uv0Z0WdtQ" />
+        <Link Id="U06lp2KBrTBqMmYzpiLPYG" Ids="DenzBTDo2RVqsTVeiCdri6,KWgTPHKIPtubhQD0fnFUXq" />
+        <Link Id="CDTjWoRH5hQBIhPZDRo0pH" Ids="PEuDQWv92CGOnbCniJiAcZ,JgZqSdsWPE9ZAPR3thK41V" />
         <Link Id="GuXEmbNFUOCrTx2lsy5vDC" Ids="UnaIkq8cPr0a4UZQVn7ji7,Usi9xynIVqJWvRhEvGVOYQ" />
         <Link Id="B8o38upRBCpnGJcCCYjsuY" Ids="CNYLiTg3BUtmCJlFwHyUjv,ULh17fD8cDxRi4lqa2hYtY" />
         <Link Id="A1AwFIAycdcFWjykRiUKiv" Ids="MVGJGduk0mPWJznoGv9YVX,RgIIgaq8NiTBppqeaxZgPe" />

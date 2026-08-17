@@ -51,13 +51,19 @@ proof, because an error tile is also a valid PNG.
 | `https://tile.openstreetmap.org/{z}/{x}/{y}.png` | ODbL data, CC-BY-SA tiles | `© OpenStreetMap contributors` |
 | `https://tile.opentopomap.org/{z}/{x}/{y}.png` | CC-BY-SA 3.0 | `Map data: © OpenStreetMap contributors, SRTM \| Style: © OpenTopoMap (CC-BY-SA)` |
 | `https://a.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png` | ODbL / CC-BY-SA | `© OpenStreetMap contributors \| CyclOSM` |
-| `https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2020_3857/default/g/{z}/{y}/{x}.jpg` | **CC BY-NC** — see below | `EOxCloudless 2020 by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2020)` |
+| `https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2020_3857/default/g/{z}/{y}/{x}.jpg` | **CC BY-NC** — see below | `Sentinel-2 cloudless 2020 by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2020)` |
+| `https://tiles.maps.eox.at/wmts/1.0.0/blackmarble_3857/default/g/{z}/{y}/{x}.jpg` | NASA imagery, EOX rendering | `Black Marble { © NASA } \| Rendering © EOX` |
+| `https://tiles.maps.eox.at/wmts/1.0.0/terrain-light_3857/default/g/{z}/{y}/{x}.jpg` | OSM/NaturalEarth/GEBCO data, EOX rendering | `Terrain Light { Data © OpenStreetMap contributors and others, Rendering © EOX }` |
 
 Three notes that cost an afternoon each if you meet them the hard way:
 
 - **s2cloudless is non-commercial.** Free for "academic research, educational materials, school and
   university projects, NGO publications and humanitarian mapping, personal use"; anything
   commercial needs an EOX licence. Shipping the URL is fine — what you *display* is your side of it.
+- **All three EOX layers come off a demo service**, which states "provided as is without any
+  guarantee. Content and availability may change without notice" and applies rate limiting under
+  load. Fine for a lesson; not something to point an installation at. The per-source disk cache is
+  most of what makes us a tolerable guest.
 - **The `{s}` subdomain placeholder is not supported.** `XYZ` hands the template to BruTile, which
   substitutes `{x}`, `{y}` and `{z}` and nothing else, so a provider's documented
   `https://{s}.example.com/…` must have a real subdomain written in (`a.`) or be dropped. Some hosts
