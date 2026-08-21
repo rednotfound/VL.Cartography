@@ -23,4 +23,7 @@
 		<VLDocument link="Tutorial 02 Your own points, lines and polygons.vl" tags="nts,netTopologySuite,geometry,coordinate,point,linestring,linearring,polygon,feature,featureLayer,styleByGeometry,style,airport,haneda,runway,tutorial,spine" />
 		<VLDocument link="Tutorial 04 Real data.vl" tags="geojson,map,mapsui,read,parse,feature,nts,netTopologySuite,style,styleByGeometry,label,marker,wgs84,mercator,projection,integration,packages,tutorial,spine" />
 	</Topic>
+	<Topic title="Prompts">
+		<VLDocument link="Prompt A mountain.vl" tags="fuji,mountain,peak,crater,elevation,geojson,nts,coordinate,linestring,linearring,polygon,trail,osm,openstreetmap,label,prompt,japan" />
+	</Topic>
 </Pack>

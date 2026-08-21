@@ -126,3 +126,20 @@ this vector data, since they are the same source.
 *(`haneda-runways-and-buildings.geojson` is the same extract with the taxiways removed — 42
 features, kept because a 40 KB file can be embedded in a patch as a string where a 307 KB one
 cannot. Same terms.)*
+
+## `help/Assets/fuji.geojson` — Mount Fuji
+
+**65 features from OpenStreetMap**, fetched through Overpass on 2026-08-22 for
+`35.28,138.66–35.42,138.82`: 41 segments of the five climbing routes (吉田, 富士宮, 須走, 御殿場,
+河口湖), 13 peaks and 11 mountain huts. Peaks and huts carry `ele`, which is why the file is worth
+more than its geometry.
+
+**ODbL**, same terms and the same obligation as the Haneda extract: the credit belongs wherever the
+data is shown, so `Prompt A mountain` carries an `Attribution` widget.
+
+The nine crater-rim coordinates **typed into that patch by hand** come from the same source — they
+are the peaks between 3718 m and 3776 m, and they are printed in the patch as numbers rather than
+loaded, which does not change whose measurement they are.
+
+*(Elevations, for anyone checking the patch text against the file: 剣ヶ峰 3776, 白山岳 3756,
+伊豆岳 3749, 成就岳 3734, 三島岳 3734, 朝日岳 3733, 久須志岳 3725, 浅間岳 3722, 駒ヶ岳 3718.)*
