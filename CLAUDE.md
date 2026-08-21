@@ -211,3 +211,34 @@ Every file in `help\Assets\` gets a row in `THIRD-PARTY-NOTICES.md` **before** i
 Geographic data almost always carries a licence, and several require attribution wherever the data
 is *shown* rather than merely redistributed — which is a working constraint on anyone building a
 map, and part of what chapter 04 teaches.
+
+## The checked-in `.vl` is the source of truth. Never regenerate one.
+
+`Tutorial 01` was first *generated* — a script derived it from vl-mapsui's
+`HowTo Drive the map with the mouse.vl`, deleting and rebuilding the file each run. That was the
+right way to get a patch that compiles. **It stopped being right the moment the patch was arranged
+by hand**, on 2026-08-18, and re-running that script now would silently destroy the arrangement.
+
+This reverses nothing; it is the rule vl-mapsui already carries, arriving here for the same reason:
+
+> Regenerating turned out to be the more destructive of the two once a patch was in use: it
+> discarded a layout arranged by hand in the GUI.
+
+So: **edit in place, and validate every edit** — anchor each change on a match that occurs exactly
+once and fail loudly otherwise, then check ID legality and uniqueness, dangling link endpoints, the
+BOM, an XML parse, `tools\Test-VLPackage.ps1`, and a `vvvvc` compile.
+
+### What the hand-arranging changed, and why it is worth preserving
+
+Reading the diff taught two things a generator would not have produced:
+
+- **Things that belong together go on the same rows.** The six basemap URLs and their six credits
+  now sit in two columns at the same six vertical positions, so "this credit belongs to that
+  basemap" is something the eye establishes. The generated version had them 700 units apart because
+  the strings are long — which hid the one design rule the chapter exists to teach.
+- **A short label next to a control beats a paragraph about it.** The long explanation stayed, moved
+  aside into a tall column; what got *added* was two one-line labels — an arrow beside the `Basemap`
+  knob, and "if you don't have a scroll wheel, click here" beside the zoom buttons. Nobody opening a
+  patch reads sixty lines first. They do read the label touching the thing they are about to click.
+
+Generated patches run. Arranged patches get read. **A chapter has to do the second.**

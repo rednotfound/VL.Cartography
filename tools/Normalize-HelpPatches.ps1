@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Pins the VL.GIS dependency of every help patch to 0.0.0.
+    Pins every family-package dependency of every chapter to 0.0.0.
 
 .DESCRIPTION
     A help patch ships *inside* the package it demonstrates, and still has to declare a
@@ -49,13 +49,17 @@ $HelpDir  = Join-Path $RepoRoot 'help'
 # The sentinel every shipped pack uses. Lowest possible version, so it is satisfied by
 # whichever build of the package the patch happens to be sitting inside.
 $Pinned  = '0.0.0'
-# Every package in this repository, not just VL.GIS -- a help patch may reference several,
-# and vvvv rewrites the version of each on save. Discovered the same way build.ps1 does.
-$LocalPackages = @(
-    Get-ChildItem $RepoRoot -Filter '*.vl' -File |
-        Where-Object { Test-Path (Join-Path $RepoRoot "$($_.BaseName).nuspec") } |
-        ForEach-Object { $_.BaseName }
-)
+# THE LIBRARIES THIS PACK TEACHES - not the ones it produces, because it produces none.
+#
+# This script arrived as a copy from vvvv-gis, where it discovered "every package in this
+# repository" by looking for a .vl with a matching .nuspec at the root. Here that finds
+# VL.Cartography itself, which no chapter depends on, so it warned and normalised nothing while
+# looking like it had run. Test-VLPackage.ps1 next to it was written from scratch and says so;
+# this one was not, and the copied assumption was false the moment it landed.
+#
+# Same list as the validator, for the same reason: a chapter that pins an exact version of a
+# sibling asks every future user for that exact version forever.
+$LocalPackages = @('VL.Mapsui', 'VL.GeoJSON', 'VL.NetTopologySuite')
 # Three groups so the current version can be reported, not just replaced.
 $Pattern = '(<NugetDependency\b[^>]*\bLocation="(?:' +
            (($LocalPackages | ForEach-Object { [regex]::Escape($_) }) -join '|') +
@@ -81,7 +85,7 @@ foreach ($patch in $patches) {
     if ($text -notmatch $Pattern) {
         # Not every help patch has to use nodes from this repository, but one that does not
         # is much more likely to have lost its dependency than to be deliberate.
-        Write-Warning "$relative declares no dependency on any package in this repository"
+        Write-Warning "$relative declares none of $($LocalPackages -join ', ') - Test-VLPackage will fail it"
         continue
     }
 
