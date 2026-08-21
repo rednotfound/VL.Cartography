@@ -106,3 +106,23 @@ and where from decides whether the chapter may print them.
 boundary of anything — a real airport outline has hundreds of vertices and arrives in a file, which
 is chapter 04. Passing off a sketch as surveyed data would be the exact failure this pack keeps
 warning about, one row further down the stack.
+
+## `help/Assets/haneda.geojson` — the real airport
+
+**754 features from OpenStreetMap**, fetched through Overpass on 2026-08-18 for the bounding box
+`35.53,139.75,35.58,139.83` and converted to GeoJSON: 712 taxiways, 14 aprons, 9 runways, 9
+terminals, 6 hangars, 4 helipads. Coordinates rounded to six decimals — about 0.1 m at this
+latitude, and anything finer is noise that only costs bytes.
+
+**ODbL, and this one has teeth.** Attribution is required *wherever the data is shown*, not merely
+wherever the file is passed on. So `Tutorial 02` carries an `Attribution` widget, which its donor
+patch did not — that was added the moment this file arrived, because displaying ODbL data with no
+credit on screen is a licensing defect rather than a cosmetic gap. Derived databases must also be
+shared alike.
+
+The credit reads `© OpenStreetMap contributors`, and one line covers both the basemap tiles and
+this vector data, since they are the same source.
+
+*(`haneda-runways-and-buildings.geojson` is the same extract with the taxiways removed — 42
+features, kept because a 40 KB file can be embedded in a patch as a string where a 307 KB one
+cannot. Same terms.)*
