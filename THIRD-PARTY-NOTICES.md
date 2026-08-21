@@ -90,3 +90,19 @@ them here**: a request that succeeds tells you nothing about whether you were pe
 Any other provider — Mapbox, Stadia, Thunderforest, a national service — has its own terms, its own
 key, and its own required credit. `XYZ` will point at any of them. Reading their terms is your
 part.
+
+## Coordinates typed into `Tutorial 02`
+
+Nothing is shipped as a file — these are numbers in IOBoxes — but they still came from somewhere,
+and where from decides whether the chapter may print them.
+
+| what | source | licence |
+|---|---|---|
+| Haneda Terminals 1, 2 and 3 | [Wikidata](https://www.wikidata.org/) Q57080453 / Q57080454 / Q57080456 | **CC0** — no attribution required |
+| Runway 16L/34R, and the other three in the comment | [OurAirports](https://ourairports.com/data/) | **public domain** |
+| the box round the runways | drawn by hand for this chapter | MIT, like the patch |
+
+**The third row is the point of the table.** The chapter says out loud that the box is not the
+boundary of anything — a real airport outline has hundreds of vertices and arrives in a file, which
+is chapter 04. Passing off a sketch as surveyed data would be the exact failure this pack keeps
+warning about, one row further down the stack.

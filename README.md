@@ -30,7 +30,7 @@ that order matters, so it is spent only here.
 | | | you end up with |
 |---|---|---|
 | **Tutorial 01** | Change how the world looks | a map — and the knowledge that its entire appearance is one string you own |
-| **Tutorial 02** | Your own points, lines and polygons | shapes you made, drawn on the earth, styled by kind |
+| **Tutorial 02** | Your own points, lines and polygons | shapes you made, drawn on the earth, styled by kind — Haneda, typed in as numbers |
 | **Tutorial 03** | The map is just giving you coordinates | the escape hatch: the map hands you an x and a y, and you draw whatever you like |
 | **Tutorial 04** | Real data | GeoJSON, from a file or straight off the network |
 
@@ -40,7 +40,7 @@ prerequisite and no completion.
 > *Two colours only* · *Minimal map* · *Live earthquakes* · *Out of this world* ·
 > *Places and their names*
 
-**Tutorials 01 and 04 exist so far.**
+**Tutorials 01, 02 and 04 exist so far.**
 
 ### Why 03 comes before 04
 

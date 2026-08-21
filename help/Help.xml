@@ -20,6 +20,7 @@
 	-->
 	<Topic title="The course">
 		<VLDocument link="Tutorial 01 Change how the world looks.vl" tags="map,mapsui,basemap,tile,xyz,url,template,style,appearance,attribution,licence,terrain,satellite,opentopomap,openstreetmap,cyclosm,sentinel,tutorial,spine,start,first" />
+		<VLDocument link="Tutorial 02 Your own points, lines and polygons.vl" tags="nts,netTopologySuite,geometry,coordinate,point,linestring,linearring,polygon,feature,featureLayer,styleByGeometry,style,airport,haneda,runway,tutorial,spine" />
 		<VLDocument link="Tutorial 04 Real data.vl" tags="geojson,map,mapsui,read,parse,feature,nts,netTopologySuite,style,styleByGeometry,label,marker,wgs84,mercator,projection,integration,packages,tutorial,spine" />
 	</Topic>
 </Pack>
