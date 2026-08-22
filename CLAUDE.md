@@ -9,8 +9,8 @@ Read this section, then `docs/CURRICULUM.md`, then `D:\2026_Projects\vl-mapsui\d
 and every patch-engineering fact Act I paid for.
 
 **Renamed from VL.Cartography to VL.Overworld on 2026-08-22** (the third correction made the old
-name wrong: a course that no longer starts with maps cannot be called cartography). If this folder
-is still `vl-cartography`, only the final folder-rename step in `docs/RENAME.md` remains.
+name wrong: a course that no longer starts with maps cannot be called cartography). The rename is
+complete — folder, repo, nuspec, memory junction — and the smoke test passed the same day.
 
 **The memory directory for this project is a junction onto the shared one** — literally the same
 files a session in `vl-mapsui` or `vvvv-gis` sees, so everything learned in any of the four
