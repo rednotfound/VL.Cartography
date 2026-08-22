@@ -3,7 +3,7 @@
 The patches in this package are MIT. **The sample data is not** — geographic data almost always
 carries a licence, and several of them require attribution wherever the data is *shown*, not
 merely wherever it is redistributed. That is a working constraint on anyone building a map, which
-is why chapter 04 treats it as part of the lesson.
+is why chapter 09 treats it as part of the lesson.
 
 ## Sample data shipped in `help/Assets/`
 
@@ -41,7 +41,7 @@ drawn, and ships every patch with the tile layer switched **off** so that openin
 not fetch anything you did not agree to. Those are not conveniences; they are what the policy asks
 for.
 
-### The basemaps `Tutorial 01` offers, and what each asks
+### The basemaps `Tutorial 06` offers, and what each asks
 
 Every one was fetched and **looked at** on 2026-08-17 — a 200 and a plausible byte count is not
 proof, because an error tile is also a valid PNG.
@@ -91,7 +91,7 @@ Any other provider — Mapbox, Stadia, Thunderforest, a national service — has
 key, and its own required credit. `XYZ` will point at any of them. Reading their terms is your
 part.
 
-## Coordinates typed into `Tutorial 02`
+## Coordinates typed into `Tutorial 07`
 
 Nothing is shipped as a file — these are numbers in IOBoxes — but they still came from somewhere,
 and where from decides whether the chapter may print them.
@@ -104,7 +104,7 @@ and where from decides whether the chapter may print them.
 
 **The third row is the point of the table.** The chapter says out loud that the box is not the
 boundary of anything — a real airport outline has hundreds of vertices and arrives in a file, which
-is chapter 04. Passing off a sketch as surveyed data would be the exact failure this pack keeps
+is chapter 09. Passing off a sketch as surveyed data would be the exact failure this pack keeps
 warning about, one row further down the stack.
 
 ## `help/Assets/haneda.geojson` — the real airport
@@ -115,7 +115,7 @@ terminals, 6 hangars, 4 helipads. Coordinates rounded to six decimals — about 
 latitude, and anything finer is noise that only costs bytes.
 
 **ODbL, and this one has teeth.** Attribution is required *wherever the data is shown*, not merely
-wherever the file is passed on. So `Tutorial 02` carries an `Attribution` widget, which its donor
+wherever the file is passed on. So `Tutorial 07` carries an `Attribution` widget, which its donor
 patch did not — that was added the moment this file arrived, because displaying ODbL data with no
 credit on screen is a licensing defect rather than a cosmetic gap. Derived databases must also be
 shared alike.

@@ -25,14 +25,28 @@ Install this one and all three arrive. Everything appears in vvvv's Help Browser
 ## Two tiers
 
 **The spine** is short, ordered, and each unit adds exactly one capability. Numbering is a claim
-that order matters, so it is spent only here.
+that order matters, so it is spent only here. It runs in **two acts: geometry first, maps second**
+— because GIS is spatial *computation* before it is cartography, and a polygon answering questions
+under your cursor renders instantly, offline, with nothing to agree to.
+
+**Act I — space as computation.** No basemap, no network, no files.
 
 | | | you end up with |
 |---|---|---|
-| **Tutorial 01** | Change how the world looks | a map — and the knowledge that its entire appearance is one string you own |
-| **Tutorial 02** | Your own points, lines and polygons | shapes you made, drawn on the earth, styled by kind — Haneda, typed in as numbers |
-| **Tutorial 03** | The map is just giving you coordinates | the escape hatch: the map hands you an x and a y, and you draw whatever you like |
-| **Tutorial 04** | Real data | GeoJSON, from a file or straight off the network |
+| **Tutorial 01** | Your cursor is now data | the dot you see and a line of WKT — two spellings of one position |
+| **Tutorial 02** | *(planned)* A dot, a path, a plot of ground | three geometries, and the measure only each can answer |
+| **Tutorial 03** | *(planned)* In or out | a spatial question whose answer flips as you move |
+| **Tutorial 04** | *(planned)* The shortest line between | distance as a thing you can draw, not just a number |
+| **Tutorial 05** | *(planned)* Grow a shape | geometry that generates geometry, driven by any signal |
+
+**Act II — the earth arrives.**
+
+| | | you end up with |
+|---|---|---|
+| **Tutorial 06** | Change how the world looks | a map — and the knowledge that its entire appearance is one string you own |
+| **Tutorial 07** | Your own points, lines and polygons | shapes you made, drawn on the earth, styled by kind — Haneda, typed in as numbers |
+| **Tutorial 08** | The map is just giving you coordinates | the escape hatch: the map hands you an x and a y, and you draw whatever you like |
+| **Tutorial 09** | Real data | GeoJSON, from a file or straight off the network |
 
 **The prompts** are unordered, unnumbered and skippable. Pick one. Ignore the rest. There is no
 prerequisite and no completion.
@@ -40,9 +54,12 @@ prerequisite and no completion.
 > *Two colours only* · *Minimal map* · *Live earthquakes* · *Out of this world* ·
 > *Places and their names*
 
-**Tutorials 01, 02 and 04 exist so far.**
+**Tutorials 06, 07 and 09 exist so far** (numbered 01, 02 and 04 until 2026-08-22 — the geometry
+act took the front numbers; see
+[CURRICULUM.md](https://github.com/rednotfound/VL.Cartography/blob/main/docs/CURRICULUM.md)'s third
+correction for why).
 
-### Why 03 comes before 04
+### Why 08 comes before 09
 
 Because that is the moment the map stops being a map. [Unfolding](http://unfoldingmaps.org/) — the
 Processing map library written for designers and artists — puts the same lesson before its GeoJSON

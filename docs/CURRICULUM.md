@@ -1,7 +1,7 @@
 # What this course is based on
 
-This document has now been wrong twice, in the same way both times, and the second correction is
-the reason it is worth reading.
+This document has now been wrong twice — three times, counting the one below — in the same way
+each time, and the corrections are the reason it is worth reading.
 
 **First version.** The outline was *invented* — assembled from whatever the libraries had just run
 into. Asked what it was based on, the honest answer was "nothing". So the field was searched, and
@@ -20,6 +20,23 @@ taxonomy is still a taxonomy.
 checklist**: it answers "does this course teach what the field considers core?" It does not get to
 order the chapters or name them. Those now come from evidence about how people voluntarily learn to
 make things.
+
+**Third version — 2026-08-22.** The first two corrections were about the *door*; this one is about
+the *subject*. The course had equated "a payoff inside five minutes" with "a map on screen" — and a
+map is the one payoff in this stack that opens with a consent gate: `Enabled` is off by default on
+anything that fetches (OSM's tile policy is a constraint, not etiquette), so the old chapter 1
+rendered nothing until the reader agreed to network traffic. Meanwhile the audience this course is
+actually for — creative coders, who already hold vectors, transforms, fields and collision tests —
+was being introduced to GIS through its *cartographic* surface instead of through the half they
+already understand: **spatial computation.** A polygon that answers `Contains` under the cursor
+renders instantly, offline, with zero consent gates, and passes the seven door tests below *better*
+than the basemap did. So the spine now runs in **two acts: geometry first (01–05, no basemap, no
+network, no files), maps second (06–09)** — the same demotion GST 101 received, applied to
+cartography itself. The reframe follows the project brief (*teach spatial thinking through creative
+coding*) and mirrors how the field's own libraries layer: JTS, Shapely and NetTopologySuite all put
+computation below and rendering above. What did **not** change: every door still renders in the
+first screenful, still has one obvious knob, and outcome-naming still rules — the corrections
+compound, they do not replace each other.
 
 ---
 
@@ -169,12 +186,12 @@ it**, not **when**.
 |---|---|---|
 | **0** Getting to Know FOSS and FOSS4G | what open source is, OSGeo, installing QGIS | **skipped** — a vvvv reader already has their tool |
 | **1** GIS Application Paper | a writing assignment | **skipped** — academic assessment |
-| **2** Spatial Data Models | vector vs raster; open a shapefile and a Landsat scene; notice vector layers arrive in a random colour | spine 01 (raster, as *"change how the world looks"*) and 02 (vector) |
+| **2** Spatial Data Models | vector vs raster; open a shapefile and a Landsat scene; notice vector layers arrive in a random colour | spine 06 (raster, as *"change how the world looks"*) and 02/07 (vector) |
 | **3** Coordinate Systems and Map Projections | EPSG codes; shape and area **distortion** across world projections; UTM; datum | **not yet, and blocked** — no reprojection node exists in the family |
-| **4** Displaying Geospatial Data | single symbol vs **categorised by attribute value**; layer order; legend naming | spine 02 partly; **the categorised half is blocked** — see gaps |
+| **4** Displaying Geospatial Data | single symbol vs **categorised by attribute value**; layer order; legend naming | spine 07 partly; **the categorised half is blocked** — see gaps |
 | **5** Creating Geospatial Data | digitising | **out of scope** — `Mapsui.Nts.Editing` is not wrapped |
 | **6** Remote Sensing and Analysis | imagery interpretation | **out of scope** — another field |
-| **7** Basic Geospatial Analysis | buffers, overlays, selection | **belongs to VL.NetTopologySuite**, which has 8 of them |
+| **7** Basic Geospatial Analysis | buffers, overlays, selection | **belongs to VL.NetTopologySuite**, which has 9 of them — Act I chapters 03–05 will teach them |
 
 Two observations from the original reading, both still load bearing:
 
@@ -189,19 +206,36 @@ Two observations from the original reading, both still load bearing:
 
 ## The chapters
 
-### The spine — four, ordered, each adding exactly one capability
+### The spine — two acts, ordered, each unit adding exactly one capability
+
+**Act I — space as computation.** No basemap, no network, no files. Geometry lives in a small
+local space and is rendered directly; every chapter runs offline the moment it opens. Renumbered
+2026-08-22 (see the third correction above); titles of the unwritten chapters are working titles
+from the design review and may change as they are built.
 
 | | title | what it adds | packages |
 |---|---|---|---|
-| 01 | **Change how the world looks** | a map exists, and its appearance is a string you own | VL.Mapsui |
-| 02 | **Your own points, lines and polygons** | geometry you made, styled by type | + NTS |
-| 03 | **The map is just giving you coordinates** | `WorldToScreen` → draw anything you like on top | + NTS |
-| 04 | **Real data** | GeoJSON, from a file or from the network | + VL.GeoJSON |
+| 01 | **Your cursor is now data** | a position becomes a value: Coordinate → Point → WKT | VL.NetTopologySuite |
+| 02 | *(planned)* **A dot, a path, a plot of ground** | three geometries, and the measure only each can answer | VL.NetTopologySuite |
+| 03 | *(planned)* **In or out** | a question asked of two geometries, answered every frame | VL.NetTopologySuite |
+| 04 | *(planned)* **The shortest line between** | distance as a drawable thing — `Nearest Points` | VL.NetTopologySuite |
+| 05 | *(planned)* **Grow a shape** | geometry that generates geometry, driven by any signal | VL.NetTopologySuite |
 
-**01 uses one package, which the pack's own rule normally forbids.** The exemption and its reason
-are in `CLAUDE.md`; briefly, a course with a hole at chapter 1 is worse than a duplicated node.
+**Act II — the earth arrives.** The same values, now with the planet under them.
 
-**03 comes before 04 deliberately.** Unfolding puts `getScreenPosition` *before* its GeoJSON
+| | title | what it adds | packages |
+|---|---|---|---|
+| 06 | **Change how the world looks** | a map exists, and its appearance is a string you own | VL.Mapsui |
+| 07 | **Your own points, lines and polygons** | your geometry drawn on the earth, styled by type | + NTS |
+| 08 | **The map is just giving you coordinates** | `WorldToScreen` → draw anything you like on top | + NTS |
+| 09 | **Real data** | GeoJSON, from a file or from the network | + VL.GeoJSON |
+
+**Single-package spine chapters use the exemption written into this pack's rules** — Act I is
+VL.NetTopologySuite throughout, and 06 is VL.Mapsui alone. The exemption and its reason are in
+`CLAUDE.md`; briefly, a course with a hole at its door is worse than a duplicated node, and each
+act's opener adds exactly one capability on purpose.
+
+**08 comes before 09 deliberately.** Unfolding puts `getScreenPosition` *before* its GeoJSON
 tutorial and says why: *"the easiest method to create a custom style is to draw the marker
 yourself."* That is the moment the map stops being a map and becomes a coordinate provider, and the
 reader returns to the visual language they already have. It is the strongest thing this stack can

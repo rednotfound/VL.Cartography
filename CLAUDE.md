@@ -15,12 +15,19 @@ VL.Mapsui was working, and cost a round of wrong reasoning before anyone checked
 
 ### Where the work stands — 2026-08-22
 
+**2026-08-22, evening: the spine now runs in two acts** — geometry (01–05: no basemap, no network,
+no files, VL.NetTopologySuite only) then maps (06–09). The map act's chapters kept their content
+and hand-arranged layouts; only numbers and in-text references moved. The reasoning is
+`docs/CURRICULUM.md`'s **third correction**.
+
 | unit | state |
 |---|---|
-| `Tutorial 01 Change how the world looks` | done, **arranged by hand** |
-| `Tutorial 02 Your own points, lines and polygons` | done, layout still machine-generated |
-| `Tutorial 03 The map is just giving you coordinates` | **not written** — the hook, and the obvious next one |
-| `Tutorial 04 Real data` | done (it was numbered 05 until the renumber) |
+| `Tutorial 01 Your cursor is now data` (geometry act) | in progress |
+| `Tutorial 02–05` (geometry act) | designed in the direction review, **not written** |
+| `Tutorial 06 Change how the world looks` | done, **arranged by hand** (was 01) |
+| `Tutorial 07 Your own points, lines and polygons` | done, layout still machine-generated (was 02) |
+| `Tutorial 08 The map is just giving you coordinates` | **not written** (was 03) |
+| `Tutorial 09 Real data` | done (was 04, and 05 before that) |
 | `Prompt A mountain` | done, layout still machine-generated |
 
 Nothing is published anywhere. Everything runs off the siblings' `dist\` folders on disk.
@@ -146,8 +153,8 @@ On **2026-08-16**, one cross-package patch found three that 218 tests had missed
 - the first fix stacked two styles and put a second circle on every point
 - a nested `StyleCollection` rendered nothing at all — 156 px where the flat one drew 14884
 
-On **2026-08-17**, `Tutorial 01` — whose entire lesson is switching basemaps — found two more on its
-first run:
+On **2026-08-17**, the basemap tutorial (then `Tutorial 01`, now `06`) — whose entire lesson is
+switching basemaps — found two more on its first run:
 
 - **every tile source shared one cache folder**, so the second basemap you picked never fetched
   anything. Changing the preset appeared to do nothing while every status pin reported success
@@ -300,11 +307,11 @@ door and cost two launches.
 Every file in `help\Assets\` gets a row in `THIRD-PARTY-NOTICES.md` **before** it is committed.
 Geographic data almost always carries a licence, and several require attribution wherever the data
 is *shown* rather than merely redistributed — which is a working constraint on anyone building a
-map, and part of what chapter 04 teaches.
+map, and part of what chapter 09 teaches.
 
 ## The checked-in `.vl` is the source of truth. Never regenerate one.
 
-`Tutorial 01` was first *generated* — a script derived it from vl-mapsui's
+The basemap tutorial (now `Tutorial 06`) was first *generated* — a script derived it from vl-mapsui's
 `HowTo Drive the map with the mouse.vl`, deleting and rebuilding the file each run. That was the
 right way to get a patch that compiles. **It stopped being right the moment the patch was arranged
 by hand**, on 2026-08-18, and re-running that script now would silently destroy the arrangement.
