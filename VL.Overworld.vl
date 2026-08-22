@@ -8,7 +8,7 @@
     Application and 1322 bytes - and it is the shape to copy, because the alternative is inventing
     nodes nobody asked for so the package has something to declare.
 
-    The libraries this pack teaches are declared in VL.Cartography.nuspec, not here. A user
+    The libraries this pack teaches are declared in VL.Overworld.nuspec, not here. A user
     installs one package and the whole family arrives.
   -->
   <Patch Id="DMwwTMv9lp5zata3xHQIGe">

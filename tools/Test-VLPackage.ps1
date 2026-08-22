@@ -41,7 +41,7 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-$PackName = 'VL.Cartography'
+$PackName = 'VL.Overworld'
 $VlFile   = Join-Path $RepoRoot "$PackName.vl"
 $Nuspec   = Join-Path $RepoRoot "$PackName.nuspec"
 $HelpDir  = Join-Path $RepoRoot 'help'

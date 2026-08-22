@@ -4,7 +4,7 @@
   <NugetDependency Id="Sm17wEPgUJCVB75op3gzPF" Location="VL.Skia" Version="2025.7.4" />
   <NugetDependency Id="CCoTJSCcdlnfZwmjUnPFVB" Location="VL.Mapsui" Version="0.0.0" />
   <!--
-    VL.GeoJSON is why this patch lives in VL.Cartography and not in VL.Mapsui's help\. VL.Mapsui's nuspec does not
+    VL.GeoJSON is why this patch lives in VL.Overworld and not in VL.Mapsui's help\. VL.Mapsui's nuspec does not
     depend on it and must not: a map engine has no business requiring a GeoJSON reader. So this
     document needs THREE packages and no single package can promise them, which is exactly the
     case help\ cannot carry - every .vl under help\VL.Mapsui\ is packed and would then open red

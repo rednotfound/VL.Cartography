@@ -53,7 +53,7 @@ $Pinned  = '0.0.0'
 #
 # This script arrived as a copy from vvvv-gis, where it discovered "every package in this
 # repository" by looking for a .vl with a matching .nuspec at the root. Here that finds
-# VL.Cartography itself, which no chapter depends on, so it warned and normalised nothing while
+# VL.Overworld itself, which no chapter depends on, so it warned and normalised nothing while
 # looking like it had run. Test-VLPackage.ps1 next to it was written from scratch and says so;
 # this one was not, and the copied assumption was false the moment it landed.
 #

@@ -1,6 +1,6 @@
-# VL.Cartography
+# VL.Overworld
 
-**Maps and geographic data in [vvvv gamma](https://vvvv.org).**
+**Spatial thinking in [vvvv gamma](https://vvvv.org) — geometry first, maps second.**
 
 This package contains **no nodes**. It installs the libraries that do, and adds the patches that
 show them working together:
@@ -56,7 +56,7 @@ prerequisite and no completion.
 
 **The geometry act (01–05) is complete; 06, 07 and 09 of the map act exist** (the map act was
 numbered 01, 02 and 04 until 2026-08-22 — the geometry act took the front numbers; see
-[CURRICULUM.md](https://github.com/rednotfound/VL.Cartography/blob/main/docs/CURRICULUM.md)'s third
+[CURRICULUM.md](https://github.com/rednotfound/VL.Overworld/blob/main/docs/CURRICULUM.md)'s third
 correction for why).
 
 ### Why 08 comes before 09
@@ -72,7 +72,7 @@ already have. Making someone read a file format before they get there would be a
 ## Where the order comes from
 
 It has been wrong twice, and both corrections are written up in
-**[CURRICULUM.md](https://github.com/rednotfound/VL.Cartography/blob/main/docs/CURRICULUM.md)**,
+**[CURRICULUM.md](https://github.com/rednotfound/VL.Overworld/blob/main/docs/CURRICULUM.md)**,
 with the sources and their licences. (An absolute link on purpose: this README ships inside the
 package, where a repository-relative path would not resolve.)
 

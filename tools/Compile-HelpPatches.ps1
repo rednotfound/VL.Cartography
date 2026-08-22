@@ -54,7 +54,7 @@ if ($paths.Feeds.Count -eq 0) {
 }
 
 if (-not $OutputDirectory) {
-    $OutputDirectory = Join-Path ([IO.Path]::GetTempPath()) "vl-cartography-compile-$PID"
+    $OutputDirectory = Join-Path ([IO.Path]::GetTempPath()) "vl-overworld-compile-$PID"
 }
 New-Item -ItemType Directory $OutputDirectory -Force | Out-Null
 

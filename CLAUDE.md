@@ -8,9 +8,9 @@ Read this section, then `docs/CURRICULUM.md`, then `D:\2026_Projects\vl-mapsui\d
 **Before writing or editing a chapter, read `docs/PATCH-GRAMMAR.md`** — the shared canvas grammar
 and every patch-engineering fact Act I paid for.
 
-**A rename to VL.Overworld is agreed and pending** — the user executes it; the complete measured
-checklist is `docs/RENAME.md`, which is deleted in the rename commit itself. Until then the name
-is VL.Cartography everywhere.
+**Renamed from VL.Cartography to VL.Overworld on 2026-08-22** (the third correction made the old
+name wrong: a course that no longer starts with maps cannot be called cartography). If this folder
+is still `vl-cartography`, only the final folder-rename step in `docs/RENAME.md` remains.
 
 **The memory directory for this project is a junction onto the shared one** — literally the same
 files a session in `vl-mapsui` or `vvvv-gis` sees, so everything learned in any of the four
@@ -110,7 +110,7 @@ Full list with measurements: `D:\2026_Projects\vl-mapsui\docs\MAPSUI-SURFACE.md`
 
 ## What this is
 
-**VL.Cartography is a course, not a library.** It contributes **no nodes**. It declares the three
+**VL.Overworld is a course, not a library.** It contributes **no nodes**. It declares the three
 libraries it teaches, and holds every patch that needs more than one of them.
 
 | repository | what it is |
@@ -285,7 +285,7 @@ NuGet resolves the real dependency graph into a temp folder, and the help patche
 **from the installed package**.
 
 This repository has no `build.ps1` or `pack.ps1` yet — there is nothing to compile. One is needed
-before it can be published; `nuget pack VL.Cartography.nuspec` has been verified by hand to produce
+before it can be published; `nuget pack VL.Overworld.nuspec` has been verified by hand to produce
 the right contents.
 
 ## Commands

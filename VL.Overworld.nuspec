@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
-    <id>VL.Cartography</id>
+    <id>VL.Overworld</id>
     <version>0.0.1-alpha</version>
-    <title>VL.Cartography — maps and geodata for vvvv gamma</title>
-    <authors>VL.Cartography Contributors</authors>
-    <owners>VL.Cartography Contributors</owners>
+    <title>VL.Overworld — spatial thinking for vvvv gamma, from geometry to maps</title>
+    <authors>VL.Overworld Contributors</authors>
+    <owners>VL.Overworld Contributors</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
-    <projectUrl>https://github.com/rednotfound/VL.Cartography</projectUrl>
+    <projectUrl>https://github.com/rednotfound/VL.Overworld</projectUrl>
     <description>
       EARLY - a course, not a library.
 
-      Maps and geographic data in vvvv gamma, taught from the ground up. This package contains no
+      Spatial thinking for vvvv gamma, taught from the ground up in two acts: geometry first - points, paths and polygons answering questions under your cursor, offline - then the earth, with real maps and real data. This package contains no
       nodes of its own. It installs the libraries that do — VL.Mapsui to draw maps,
       VL.NetTopologySuite for geometry, VL.GeoJSON to read and write it — and adds the chapters
       that show them working together.
 
-      That is why it exists at all: a worthwhile map example needs several libraries at once, and
+      That is why it exists at all: a worthwhile spatial example needs several libraries at once, and
       no single library can declare the others without pretending to be something it is not.
 
-      Starts from what a coordinate actually is, and ends at thousands of features on a live map.
+      Starts from a dot under your cursor, and ends at thousands of features on a live map.
       No GIS background assumed; a working knowledge of vvvv gamma is.
 
       Requires vvvv gamma 7.4 or newer.
     </description>
-    <summary>A course in maps and geographic data for vvvv gamma. Installs the libraries it teaches.</summary>
+    <summary>A course in spatial thinking for vvvv gamma, from geometry to maps. Installs the libraries it teaches.</summary>
     <releaseNotes>
       0.0.1-alpha - First package. Not published.
     </releaseNotes>
-    <copyright>Copyright 2026 VL.Cartography Contributors</copyright>
+    <copyright>Copyright 2026 VL.Overworld Contributors</copyright>
     <!--
       The "VL" tag is what makes the pack discoverable at https://vvvv.org/packs. The rest are the
-      words someone would actually type: this package's NAME is unambiguous in a graphics community
-      - "mapping" there means projector warping, and VL.Mapper and VL.BadMapper already own that
-      word - but "cartography" is not the first thing anyone searches for either. The tags carry
-      the search.
+      words someone would actually type: nobody searches nuget for "overworld" - the name is a game
+      word, chosen because this course teaches spatial thinking before cartography (see the third
+      correction in docs\CURRICULUM.md) - so the tags carry the search, cartography included.
+      "mapping" is avoided: in a graphics community it means projector warping.
     -->
-    <tags>VL vvvv gamma gis geo geospatial map maps cartography geojson coordinates projection mercator tutorial course</tags>
-    <repository type="git" url="https://github.com/rednotfound/VL.Cartography" />
+    <tags>VL vvvv gamma gis geo geospatial spatial geometry map maps cartography overworld geojson coordinates projection mercator tutorial course</tags>
+    <repository type="git" url="https://github.com/rednotfound/VL.Overworld" />
 
     <!--
       THE DEPENDENCIES ARE THE POINT OF THIS PACKAGE.
@@ -63,7 +63,7 @@
 
   <files>
     <!-- Entry point. Must sit at the package root, no subfolder, or vvvv never finds the package. -->
-    <file src="VL.Cartography.vl" target="" />
+    <file src="VL.Overworld.vl" target="" />
 
     <!--
       No lib\ and no assembly, deliberately. This package contributes no nodes; every file it ships
