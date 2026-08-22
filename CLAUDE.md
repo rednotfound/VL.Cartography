@@ -5,6 +5,12 @@ Guidance for Claude Code (claude.ai/code) working in this repository.
 ## Start here
 
 Read this section, then `docs/CURRICULUM.md`, then `D:\2026_Projects\vl-mapsui\docs\RULES.md`.
+**Before writing or editing a chapter, read `docs/PATCH-GRAMMAR.md`** — the shared canvas grammar
+and every patch-engineering fact Act I paid for.
+
+**A rename to VL.Overworld is agreed and pending** — the user executes it; the complete measured
+checklist is `docs/RENAME.md`, which is deleted in the rename commit itself. Until then the name
+is VL.Cartography everywhere.
 
 **The memory directory for this project is a junction onto the shared one** — literally the same
 files a session in `vl-mapsui` or `vvvv-gis` sees, so everything learned in any of the four

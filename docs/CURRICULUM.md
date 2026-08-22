@@ -274,6 +274,24 @@ people actually chose to make.
 | 4 | **Layer opacity, basemap recolouring** | Vintage style, Black, most aesthetic prompts |
 | 5 | **Map as texture, and a transformable map layer** | the entire vvvv-native shader angle |
 
+### The road beyond the two acts — the design brief's chapters vs. the libraries, measured 2026-08-22
+
+The direction brief (*teach spatial thinking through creative coding*) sketches twelve conceptual
+chapters. Where each stands, so nobody re-derives it:
+
+| brief chapter | bucket | detail |
+|---|---|---|
+| 1–4 geometry, data, questions, transforms | ✅ **built** | Act I, chapters 01–05. Feature construction unlocked by `NTS.Feature` (2026-08-22); `Touches/Overlaps/Crosses`, `ConvexHull/Simplify`, `Voronoi/Delaunay` arrive per vl-nettopologysuite's roadmap rule — when a chapter needs them |
+| 5 coordinates have meaning | ⛔ **blocked** | nothing in the family reprojects (gap rank 2). Future `VL.ProjNet`; full salvage material in retired `vvvv-gis` (`ProjectionNodes.cs`). Natural slot: the hinge between the acts, with chapter 08 |
+| 6 maps | ✅ **is Act II** | chapters 06–09. Its thematic half still blocked by `GradientTheme` (gap rank 1) |
+| 7 raster as field | 📦 **new territory** | zero support: no GeoTIFF, no DEM, no sampling. Do not promise |
+| 8 find things fast | 🔧 **waiting** | `STRtree` sits in vl-nettopologysuite's roadmap "Later" with the ProcessNode caveat; the brief's 100k-points timing demo is that node's acceptance test — build both together |
+| 9 networks, 10 3D | 📦 **new territory** | `CoordinateZ` exists and nothing else does |
+| 11 big data, 12 cloud-native | ⛔ **do not build** | by the brief's own rule: a format may only be introduced as the answer to a problem the reader has already felt |
+
+The chapter-authoring grammar that Act I established is recorded in
+[PATCH-GRAMMAR.md](PATCH-GRAMMAR.md).
+
 **Gap 5 is a wall, and must not be promised in a chapter.** `PixelSpace.Draw` calls
 `canvas.SetMatrix(SKMatrix.Identity)`, discarding whatever transform the VL.Skia scene graph
 applied, and nothing in VL.Mapsui produces an `SKImage` or a texture. Whether rendering the *whole
