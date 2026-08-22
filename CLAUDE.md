@@ -35,7 +35,7 @@ and hand-arranged layouts; only numbers and in-text references moved. The reason
 | `Tutorial 05 Grow a shape` (geometry act) | done — **rung 4 passed 2026-08-22**. First ForEach region in the pack. Layout still machine-generated |
 | `Tutorial 06 Change how the world looks` | done, **arranged by hand** (was 01) |
 | `Tutorial 07 Your own points, lines and polygons` | done, layout still machine-generated (was 02) |
-| `Tutorial 08 The map is just giving you coordinates` | written 2026-08-22, rungs 1–3 passed — **rung 4 owed**. First consumer of `WorldToScreen`; first Skia overlay in pixel space (`WithinCommonSpace` → `PixelTopLeft`). Layout machine-generated |
+| `Tutorial 08 The map is just giving you coordinates` | **rebuilt 2026-08-23** after the first draft reproduced the recorded `WithinCommonSpace` disappearance (vl-mapsui NOTES.md, 2026-08-14 and 2026-08-23): now `ScreenToWorld` → live Buffer circle → `Feature`/`FeatureLayer`, with a `FrameDelay` breaking the map↔geometry cycle. Rungs 1–3 passed — **rung 4 owed**. Layout machine-generated |
 | `Tutorial 09 Real data` | done (was 04, and 05 before that) |
 | `Prompt A mountain` | done, layout still machine-generated |
 
