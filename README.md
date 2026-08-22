@@ -34,7 +34,7 @@ under your cursor renders instantly, offline, with nothing to agree to.
 | | | you end up with |
 |---|---|---|
 | **Tutorial 01** | Your cursor is now data | the dot you see and a line of WKT — two spellings of one position |
-| **Tutorial 02** | *(planned)* A dot, a path, a plot of ground | three geometries, and the measure only each can answer |
+| **Tutorial 02** | A dot, a path, a plot of ground | three geometries, and the measure only each can answer |
 | **Tutorial 03** | *(planned)* In or out | a spatial question whose answer flips as you move |
 | **Tutorial 04** | *(planned)* The shortest line between | distance as a thing you can draw, not just a number |
 | **Tutorial 05** | *(planned)* Grow a shape | geometry that generates geometry, driven by any signal |
@@ -54,7 +54,7 @@ prerequisite and no completion.
 > *Two colours only* · *Minimal map* · *Live earthquakes* · *Out of this world* ·
 > *Places and their names*
 
-**Tutorials 01, 06, 07 and 09 exist so far** (the map act was numbered 01, 02 and 04 until
+**Tutorials 01, 02, 06, 07 and 09 exist so far** (the map act was numbered 01, 02 and 04 until
 2026-08-22 — the geometry act took the front numbers; see
 [CURRICULUM.md](https://github.com/rednotfound/VL.Cartography/blob/main/docs/CURRICULUM.md)'s third
 correction for why).

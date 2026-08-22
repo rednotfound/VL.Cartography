@@ -20,6 +20,7 @@
 	-->
 	<Topic title="The course">
 		<VLDocument link="Tutorial 01 Your cursor is now data.vl" tags="nts,netTopologySuite,geometry,coordinate,point,wkt,mouse,cursor,vector2,skia,offline,tutorial,spine,start,first" />
+		<VLDocument link="Tutorial 02 A dot, a path, a plot of ground.vl" tags="nts,netTopologySuite,geometry,coordinate,point,linestring,linearring,polygon,vertex,length,area,wkt,vector2,skia,offline,tutorial,spine" />
 		<VLDocument link="Tutorial 06 Change how the world looks.vl" tags="map,mapsui,basemap,tile,xyz,url,template,style,appearance,attribution,licence,terrain,satellite,opentopomap,openstreetmap,cyclosm,sentinel,tutorial,spine" />
 		<VLDocument link="Tutorial 07 Your own points, lines and polygons.vl" tags="nts,netTopologySuite,geometry,coordinate,point,linestring,linearring,polygon,feature,featureLayer,styleByGeometry,style,airport,haneda,runway,tutorial,spine" />
 		<VLDocument link="Tutorial 09 Real data.vl" tags="geojson,map,mapsui,read,parse,feature,nts,netTopologySuite,style,styleByGeometry,label,marker,wgs84,mercator,projection,integration,packages,tutorial,spine" />
