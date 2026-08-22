@@ -22,7 +22,7 @@ and hand-arranged layouts; only numbers and in-text references moved. The reason
 
 | unit | state |
 |---|---|
-| `Tutorial 01 Your cursor is now data` (geometry act) | written 2026-08-22, compiles, layout machine-generated, **never opened in vvvv** |
+| `Tutorial 01 Your cursor is now data` (geometry act) | done — **rung 4 passed 2026-08-22**: circle follows the mouse, WKT updates live. Layout still machine-generated |
 | `Tutorial 02–05` (geometry act) | designed in the direction review, **not written** |
 | `Tutorial 06 Change how the world looks` | done, **arranged by hand** (was 01) |
 | `Tutorial 07 Your own points, lines and polygons` | done, layout still machine-generated (was 02) |
