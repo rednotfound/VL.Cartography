@@ -54,8 +54,8 @@ prerequisite and no completion.
 > *Two colours only* · *Minimal map* · *Live earthquakes* · *Out of this world* ·
 > *Places and their names*
 
-**Tutorials 06, 07 and 09 exist so far** (numbered 01, 02 and 04 until 2026-08-22 — the geometry
-act took the front numbers; see
+**Tutorials 01, 06, 07 and 09 exist so far** (the map act was numbered 01, 02 and 04 until
+2026-08-22 — the geometry act took the front numbers; see
 [CURRICULUM.md](https://github.com/rednotfound/VL.Cartography/blob/main/docs/CURRICULUM.md)'s third
 correction for why).
 

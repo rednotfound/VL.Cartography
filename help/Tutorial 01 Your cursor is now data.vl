@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="Kz5IMatgAClDG5xTwSc8eG" LanguageVersion="2025.7.4" Version="0.128">
+  <NugetDependency Id="PlNzeQRa1WSaZEddgvD3ES" Location="VL.CoreLib" Version="2025.7.4" />
+  <NugetDependency Id="IAto5bp4GvQLsTDdxDxafP" Location="VL.Skia" Version="2025.7.4" />
+  <!--
+    NetTopologySuite is declared HERE, by this document, and that is not the same as
+    VL.NetTopologySuite declaring it. A patch that uses NTS nodes itself needs its own dependency
+    on the library, or the nodes below are "Not found". Measured in Tutorial 07, kept true here.
+  -->
+  <NugetDependency Id="GqbLkhCCuNiWg1Hkh5IwRb" Location="NetTopologySuite" Version="2.6.0" />
+  <NugetDependency Id="LBB7uovFXDLZiPCDauB5bQ" Location="VL.NetTopologySuite" Version="0.0.0" />
+  <Patch Id="ErO4A39RrERK8YaQPcfmVQ">
+    <Canvas Id="H4w2j0GR20FC7OAgU3du8v" DefaultCategory="Main" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="C41nxKXC0YypJzm5lMYwDB">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <FullNameCategoryReference ID="Primitive" />
+      </p:NodeReference>
+      <Patch Id="A9VxtIWIi6CLaqGT3YTKHo">
+        <Canvas Id="T9w8alvHq6b5KSmj6tpF8J" CanvasType="Group">
+          <Pad Id="HDbR3HCv6XfUlwAWwNwFYp" Bounds="-620,-60,540,1020" ShowValueBox="true" isIOBox="true" Value="01 - Your cursor is now data.&#xD;&#xA;&#xD;&#xA;Open the renderer window and move the mouse over it. The dot follows - and so does the line of&#xD;&#xA;text under WRITE WKT.&#xD;&#xA;&#xD;&#xA;THEY ARE THE SAME THING, SPELLED TWICE. The dot is a picture. The text is a VALUE:&#xD;&#xA;POINT (0.42 0.77) can be saved to a file, sent over a wire, compared, asked questions - and&#xD;&#xA;every GIS tool on earth reads that spelling, because it is a standard called WKT.&#xD;&#xA;&#xD;&#xA;  Mouse position   a Vector2 - you have used these forever&#xD;&#xA;  Coordinate       the same two numbers, as geometry's raw material&#xD;&#xA;  Point            a geometry: a Vector2 with a passport&#xD;&#xA;&#xD;&#xA;NO MAP ANYWHERE. No longitude, no file, no internet - these are just numbers in the renderer's&#xD;&#xA;own space, and geometry does not care whose space the numbers live in. That indifference is the&#xD;&#xA;whole trick, and Act II spends it on the earth.&#xD;&#xA;&#xD;&#xA;PLAY&#xD;&#xA;  Copy the text out of the WKT box and paste it into a chat, a file, or the patch&#xD;&#xA;  'HowTo Read and write WKT' that ships with VL.NetTopologySuite. Your dot travels as text.&#xD;&#xA;&#xD;&#xA;  Move the mouse straight down and watch Y. Which way does it grow? Remember the answer -&#xD;&#xA;  the earth will have an opinion about it in Act II.&#xD;&#xA;&#xD;&#xA;GIS WORDS&#xD;&#xA;  Coordinate   an X and a Y. GIS says X first - east before north - the opposite of how&#xD;&#xA;               people say 'lat, long', and the most common bug in the whole domain.&#xD;&#xA;  Point        the simplest geometry: one position, with an identity&#xD;&#xA;  WKT          Well-Known Text, the spelling every GIS tool reads and writes&#xD;&#xA;&#xD;&#xA;CREATIVE CONNECTION&#xD;&#xA;  A Point is a Vector2 that can answer questions. In chapter 03 you will ask it one -&#xD;&#xA;  'are you inside this polygon?' - and it will answer every frame.&#xD;&#xA;&#xD;&#xA;THIS PATCH USES ONE PACKAGE, VL.NetTopologySuite, which is normally a reason to live in that&#xD;&#xA;package's own help folder rather than here. It is the exemption written into this pack's rules:&#xD;&#xA;the course opens here, and a course with a hole at chapter 1 is worse than a node appearing in&#xD;&#xA;two places.&#xD;&#xA;&#xD;&#xA;NEXT - three directions, no order:&#xD;&#xA;  Tutorial 02 (planned)      a dot, a path, a plot of ground&#xD;&#xA;  Tutorial 06                the same values, with the earth underneath&#xD;&#xA;  HowTo Read and write WKT   paste your point back into a patch">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">11</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="60,60,105,19" Id="PSdm4L4GPcFOHLNGTJBWco">
+            <p:NodeReference LastCategoryFullName="Graphics.Skia.IO" LastDependency="VL.Skia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Mouse" />
+            </p:NodeReference>
+            <Pin Id="LCDYvBNnV8SrD8iy3TlaWG" Name="Context" Kind="OutputPin" />
+            <Pin Id="I3OfSPCtNjO8EaDPd82D5Y" Name="Position In World" Kind="OutputPin" />
+            <Pin Id="VjbokCwkgXNeAkcOLKlXMD" Name="Left Pressed" Kind="OutputPin" />
+            <Pin Id="IUgiVs9drCgGaQzCuWR0oS" Name="Middle Pressed" Kind="OutputPin" />
+            <Pin Id="JOTLk1aDHkBO3EgUjn2w6n" Name="Right Pressed" Kind="OutputPin" />
+            <Pin Id="AhQ5E6PA82whMEfejfYpZj" Name="WheelDelta" Kind="OutputPin" />
+          </Node>
+          <Pad Id="SJT7yRgsAlB60xbps57iZr" Bounds="360,180,190,15" ShowValueBox="true" isIOBox="true" Value="the same position, drawn:">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">11</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="60,140,46,19" Id="Q4TGtIrZeJE72FysTHMjGC">
+            <p:NodeReference LastCategoryFullName="2D.Vector2" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Vector (Split)" />
+              <CategoryReference Kind="Vector2Type" Name="Vector2" NeedsToBeDirectParent="true" />
+            </p:NodeReference>
+            <Pin Id="CDozoVWTVhQtMdfwm03X8j" Name="Input" Kind="StateInputPin" />
+            <Pin Id="LkysMmNZsIwWzti5y9LOTB" Name="X" Kind="OutputPin" />
+            <Pin Id="QZ0cP6Ap5boTGsbSDDNbSw" Name="Y" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="60,220,80,19" Id="CIgIvQZISHIJCa0stAJGEB">
+            <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Coordinate" />
+            </p:NodeReference>
+            <Pin Id="CLysaKrthdjunjneqSZOKT" Name="X" Kind="InputPin" />
+            <Pin Id="NRVmQAlW8kJIiQWyeRQpyn" Name="Y" Kind="InputPin" />
+            <Pin Id="CkXQGD6c18D1TiubUIdn9L" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="60,300,60,19" Id="QqViZIMHTKAjYjsShC7lWg">
+            <p:NodeReference LastCategoryFullName="NTS.Geometry" LastDependency="VL.NetTopologySuite.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Point" />
+            </p:NodeReference>
+            <Pin Id="IIYiiLl8EHyZ6AMUEom06w" Name="Coordinate" Kind="InputPin" />
+            <Pin Id="B6OvMI04oq9utryLAMAhWy" Name="Factory" Kind="InputPin" />
+            <Pin Id="KYqEjc7DFalbroCny9qq4G" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="60,380,80,19" Id="OzrNdogySVoBT6D0XjNmk6">
+            <p:NodeReference LastCategoryFullName="NTS.IO" LastDependency="VL.NetTopologySuite.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="OperationCallFlag" Name="Write WKT" />
+            </p:NodeReference>
+            <Pin Id="UM46XBbhkoDWEVqZwSRmfR" Name="Geometry" Kind="InputPin" />
+            <Pin Id="UZcf0rcSNUMttyrJjPOe4H" Name="Include Z" Kind="InputPin" />
+            <Pin Id="B9NLlkxNvJpGRdSPriyaHv" Name="Result" Kind="OutputPin" />
+          </Node>
+          <Pad Id="VO5elLd2lYTWPQEqiHZd6k" Comment="" Bounds="60,440,340,20" ShowValueBox="true" isIOBox="true" Value="POINT (0 0)">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">14</p:fontsize>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Pad Id="Q6gNDHqoXtNTXcWOxFy7en" Bounds="420,443,260,15" ShowValueBox="true" isIOBox="true" Value="&lt;- the dot, spelled as text. Copy it - it travels.">
+            <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="TypeFlag" Name="String" />
+            </p:TypeAnnotation>
+            <p:ValueBoxSettings>
+              <p:fontsize p:Type="Int32">11</p:fontsize>
+              <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+            </p:ValueBoxSettings>
+          </Pad>
+          <Node Bounds="360,220,85,19" Id="D1GPit6enSSIukFIsBh36t">
+            <p:NodeReference LastCategoryFullName="Graphics.Skia.Layers" LastDependency="VL.Skia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Circle" />
+            </p:NodeReference>
+            <Pin Id="LgiGjOJT3SxsSzA2CHONhn" Name="Position" Kind="InputPin" />
+            <Pin Id="E0RVjwtGY3cO19EyBWTVUq" Name="Radius" Kind="InputPin" DefaultValue="0.05" />
+            <Pin Id="L4fS2yGwIRZ3KFwhirpmdj" Name="Anchor" Kind="InputPin" />
+            <Pin Id="KGF7eyLjji376TiucbRonY" Name="Paint" Kind="InputPin" />
+            <Pin Id="IEjedNTqAQwJkl4fdjZCG1" Name="Enabled" Kind="InputPin" />
+            <Pin Id="ORbMxOVJIAcGpSmNPWv1ij" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="300,540,44,19" Id="A3DGm83Leevw3qn4sKyn4W">
+            <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Group" />
+            </p:NodeReference>
+            <Pin Id="MLZTHPKuN9dt8iOYPfBfgH" Name="Input" Kind="InputPin" />
+            <Pin Id="AkIpqirs5N1k6fmqQac62h" Name="Input 2" Kind="InputPin" />
+            <Pin Id="LFdimxoHTP1cUPI5r7DCHu" Name="Debug" Kind="InputPin" />
+            <Pin Id="ESDRWTvkVAKrzChaPsbSKa" Name="Enabled" Kind="InputPin" />
+            <Pin Id="JVQJnBThJRqXCuThdtBknu" Name="Output" Kind="OutputPin" />
+          </Node>
+          <Node Bounds="300,600,185,19" Id="M2YHZTzFPVrtgQdPKVqw4K">
+            <p:NodeReference LastCategoryFullName="Graphics.Skia" LastDependency="VL.Skia.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="Renderer" />
+            </p:NodeReference>
+            <Pin Id="AgTVDoT6iluZDGpWCuXiOO" Name="Bounds" Kind="InputPin" DefaultValue="926, 114, 700, 700">
+              <p:TypeAnnotation LastCategoryFullName="System.Drawing" LastDependency="System.Drawing.dll">
+                <Choice Kind="TypeFlag" Name="Rectangle" />
+              </p:TypeAnnotation>
+            </Pin>
+            <Pin Id="P4uZgmdUZcFBhT85cmOPt5" Name="Bound to Document" Kind="InputPin" DefaultValue="True">
+              <p:TypeAnnotation LastCategoryFullName="Primitive" LastDependency="VL.CoreLib.vl">
+                <Choice Kind="TypeFlag" Name="Boolean" />
+              </p:TypeAnnotation>
+            </Pin>
+            <Pin Id="BsPvWB1wDFPmfx7uM3BWe2" Name="Input" Kind="InputPin" />
+          </Node>
+        </Canvas>
+        <Patch Id="H4hhMszdF1v1TTq2sQXNUK" Name="Create" />
+        <Patch Id="Q6gZgX4SjN1Sb2drFgB4TX" Name="Update" />
+        <ProcessDefinition Id="TrjTgj4DGweJhvouAwF45s">
+          <Fragment Id="KQQSMBaC24MJST1Pmjhszo" Patch="H4hhMszdF1v1TTq2sQXNUK" Enabled="true" />
+          <Fragment Id="SGvkheEzj2iOwkQNYu9xpk" Patch="Q6gZgX4SjN1Sb2drFgB4TX" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="Mo7k6aC6B3Q8kzZh691dOY" Ids="I3OfSPCtNjO8EaDPd82D5Y,CDozoVWTVhQtMdfwm03X8j" />
+        <Link Id="PvMBiY5BWApEFVppQarstv" Ids="I3OfSPCtNjO8EaDPd82D5Y,LgiGjOJT3SxsSzA2CHONhn" />
+        <Link Id="EGKwZyx6sKHE8PEsUkiYXJ" Ids="LkysMmNZsIwWzti5y9LOTB,CLysaKrthdjunjneqSZOKT" />
+        <Link Id="VOTwwaPT0JzJNlZ3fF7UAW" Ids="QZ0cP6Ap5boTGsbSDDNbSw,NRVmQAlW8kJIiQWyeRQpyn" />
+        <Link Id="Ttg18lzu95AYEFw4GreQsK" Ids="CkXQGD6c18D1TiubUIdn9L,IIYiiLl8EHyZ6AMUEom06w" />
+        <Link Id="J0aQpT3RUCU7hLYw3NrDss" Ids="KYqEjc7DFalbroCny9qq4G,UM46XBbhkoDWEVqZwSRmfR" />
+        <Link Id="T4dXEtsCqOljvPJGXlTJ2r" Ids="B9NLlkxNvJpGRdSPriyaHv,VO5elLd2lYTWPQEqiHZd6k" />
+        <Link Id="Rl8Vt58k3a3D8EGwZSAZ3p" Ids="LCDYvBNnV8SrD8iy3TlaWG,MLZTHPKuN9dt8iOYPfBfgH" />
+        <Link Id="KyEpp3vnwL2VXGKdHggNGY" Ids="ORbMxOVJIAcGpSmNPWv1ij,AkIpqirs5N1k6fmqQac62h" />
+        <Link Id="Rqv92zmeEEPSjj32dBxYKE" Ids="JVQJnBThJRqXCuThdtBknu,BsPvWB1wDFPmfx7uM3BWe2" />
+      </Patch>
+    </Node>
+  </Patch>
+</Document>
