@@ -29,8 +29,8 @@ Nothing is published anywhere. Everything runs off the siblings' `dist\` folders
 
 | repository | owns | tests | source files |
 |---|---|---|---|
-| `D:\2026_Projects\vl-mapsui` | drawing maps: tiles, layers, styles, picking, widgets | **229** xunit | 30 |
-| `D:\2026_Projects\vl-nettopologysuite` | geometry: create, inspect, operate. Category `NTS` | **81** xunit | 10 |
+| `D:\2026_Projects\vl-mapsui` | drawing maps: tiles, layers, styles, picking, widgets | **225** xunit | 30 |
+| `D:\2026_Projects\vl-nettopologysuite` | geometry **and the feature model**: create, inspect, operate. Category `NTS` | **85** xunit | 10 |
 | `D:\2026_Projects\vl-geojson` | reading and writing GeoJSON. Category `GeoJSON` | **69** (+4 skipped) | 9 |
 | **here** | the course. **No nodes, no assembly, no `src\`** | none, and none is wanted | 0 |
 
@@ -42,6 +42,14 @@ that route in two days; see the section below.
 
 They compose through **NetTopologySuite**, a library they share rather than an agreement they made.
 None references another, deliberately.
+
+**2026-08-22: the `Feature`/`Split` nodes moved from VL.Mapsui to VL.NetTopologySuite**
+(`NTS.Feature`), because a feature — geometry + attributes — is a data-model object that must be
+constructible without a map engine; every standard and every geometry core in the field layers it
+that way, and Mapsui itself converts into its own scene feature at the boundary. The evidence and
+the costs are recorded in vl-nettopologysuite's `docs/ARCHITECTURE.md`, "Where a feature lives".
+Seven help patches across two repositories were repointed (19 references); the four rungs below
+were run through rung 3 the same day — **rung 4 (GUI) is still owed** for the new category.
 
 ### How each one is tested
 

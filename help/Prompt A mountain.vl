@@ -109,7 +109,7 @@
           -->
           <Pad Id="VpQK4wm9zJ4rIVcw56Y1Kc" Comment="Layer Status - what will NOT be drawn" Bounds="300,760,440,15" ShowValueBox="true" isIOBox="true" />
           <Node Bounds="300,610,110,19" Id="KjIpQa4pEu72nwqUqUXoqT">
-            <p:NodeReference LastCategoryFullName="Mapsui" LastDependency="VL.Mapsui.vl">
+            <p:NodeReference LastCategoryFullName="NTS.Feature" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Feature" />
             </p:NodeReference>
@@ -118,7 +118,7 @@
             <Pin Id="RK2xebiQ2tGJHhTLuKJ4y8" Name="Result" Kind="OutputPin" />
           </Node>
           <Node Bounds="300,690,110,19" Id="Ukf8SSszU7nia2slky6CjD">
-            <p:NodeReference LastCategoryFullName="Mapsui" LastDependency="VL.Mapsui.vl">
+            <p:NodeReference LastCategoryFullName="NTS.Feature" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Feature" />
             </p:NodeReference>
@@ -128,7 +128,7 @@
           </Node>
 
           <Node Bounds="300,510,110,19" Id="LKlHCGkEW27uDksjQ03tsc">
-            <p:NodeReference LastCategoryFullName="Mapsui" LastDependency="VL.Mapsui.vl">
+            <p:NodeReference LastCategoryFullName="NTS.Feature" LastDependency="VL.NetTopologySuite.vl">
               <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
               <Choice Kind="OperationCallFlag" Name="Feature" />
             </p:NodeReference>
