@@ -37,7 +37,7 @@ under your cursor renders instantly, offline, with nothing to agree to.
 | **Tutorial 02** | A dot, a path, a plot of ground | three geometries, and the measure only each can answer |
 | **Tutorial 03** | In or out | a spatial question whose answer flips as you move |
 | **Tutorial 04** | The shortest line between | distance as a thing you can draw, not just a number |
-| **Tutorial 05** | *(planned)* Grow a shape | geometry that generates geometry, driven by any signal |
+| **Tutorial 05** | Grow a shape | geometry that generates geometry, driven by any signal |
 
 **Act II — the earth arrives.**
 
@@ -54,8 +54,8 @@ prerequisite and no completion.
 > *Two colours only* · *Minimal map* · *Live earthquakes* · *Out of this world* ·
 > *Places and their names*
 
-**Tutorials 01–04, 06, 07 and 09 exist so far** (the map act was numbered 01, 02 and 04 until
-2026-08-22 — the geometry act took the front numbers; see
+**The geometry act (01–05) is complete; 06, 07 and 09 of the map act exist** (the map act was
+numbered 01, 02 and 04 until 2026-08-22 — the geometry act took the front numbers; see
 [CURRICULUM.md](https://github.com/rednotfound/VL.Cartography/blob/main/docs/CURRICULUM.md)'s third
 correction for why).
 
