@@ -217,7 +217,7 @@ from the design review and may change as they are built.
 |---|---|---|---|
 | 01 | **Your cursor is now data** | a position becomes a value: Coordinate → Point → WKT | VL.NetTopologySuite |
 | 02 | **A dot, a path, a plot of ground** | three geometries, and the measure only each can answer | VL.NetTopologySuite |
-| 03 | *(planned)* **In or out** | a question asked of two geometries, answered every frame | VL.NetTopologySuite |
+| 03 | **In or out** | a question asked of two geometries, answered every frame | VL.NetTopologySuite |
 | 04 | *(planned)* **The shortest line between** | distance as a drawable thing — `Nearest Points` | VL.NetTopologySuite |
 | 05 | *(planned)* **Grow a shape** | geometry that generates geometry, driven by any signal | VL.NetTopologySuite |
 
