@@ -26,7 +26,7 @@ and hand-arranged layouts; only numbers and in-text references moved. The reason
 | `Tutorial 02 A dot, a path, a plot of ground` (geometry act) | done — **rung 4 passed 2026-08-22**. Layout still machine-generated |
 | `Tutorial 03 In or out` (geometry act) | done — **rung 4 passed 2026-08-22**. Layout still machine-generated |
 | `Tutorial 04 The shortest line between` (geometry act) | done — **rung 4 passed 2026-08-22**. First consumer of `Nearest Points`. Layout still machine-generated |
-| `Tutorial 05 Grow a shape` (geometry act) | written 2026-08-22, compiles, generated C# read, **never opened in vvvv**. First ForEach region in the pack |
+| `Tutorial 05 Grow a shape` (geometry act) | done — **rung 4 passed 2026-08-22**. First ForEach region in the pack. Layout still machine-generated |
 | `Tutorial 06 Change how the world looks` | done, **arranged by hand** (was 01) |
 | `Tutorial 07 Your own points, lines and polygons` | done, layout still machine-generated (was 02) |
 | `Tutorial 08 The map is just giving you coordinates` | **not written** (was 03) |
