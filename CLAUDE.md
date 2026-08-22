@@ -2,6 +2,88 @@
 
 Guidance for Claude Code (claude.ai/code) working in this repository.
 
+## Start here
+
+Read this section, then `docs/CURRICULUM.md`, then `D:\2026_Projects\vl-mapsui\docs\RULES.md`.
+
+**The memory directory for this project is a junction onto the shared one** — literally the same
+files a session in `vl-mapsui` or `vvvv-gis` sees, so everything learned in any of the four
+repositories is already loaded. Keep it that way. Do not write a second copy of something a
+repository already records: a memory that drifts out of date is worse than no memory, and this
+family has been bitten by exactly that (a memory saying "Mapsui is blocked" survived months after
+VL.Mapsui was working, and cost a round of wrong reasoning before anyone checked).
+
+### Where the work stands — 2026-08-22
+
+| unit | state |
+|---|---|
+| `Tutorial 01 Change how the world looks` | done, **arranged by hand** |
+| `Tutorial 02 Your own points, lines and polygons` | done, layout still machine-generated |
+| `Tutorial 03 The map is just giving you coordinates` | **not written** — the hook, and the obvious next one |
+| `Tutorial 04 Real data` | done (it was numbered 05 until the renumber) |
+| `Prompt A mountain` | done, layout still machine-generated |
+
+Nothing is published anywhere. Everything runs off the siblings' `dist\` folders on disk.
+
+### The four repositories, and who is responsible for what
+
+| repository | owns | tests | source files |
+|---|---|---|---|
+| `D:\2026_Projects\vl-mapsui` | drawing maps: tiles, layers, styles, picking, widgets | **229** xunit | 30 |
+| `D:\2026_Projects\vl-nettopologysuite` | geometry: create, inspect, operate. Category `NTS` | **81** xunit | 10 |
+| `D:\2026_Projects\vl-geojson` | reading and writing GeoJSON. Category `GeoJSON` | **69** (+4 skipped) | 9 |
+| **here** | the course. **No nodes, no assembly, no `src\`** | none, and none is wanted | 0 |
+
+**The division that matters: a missing or broken NODE is never fixed here.** If a chapter cannot be
+written because a node does not exist or misbehaves, the work belongs in the library that owns it,
+with a test there — and this repository's job is to have found it. Writing a workaround in a patch
+would hide the finding, which is the one thing this pack exists to prevent. Five defects have gone
+that route in two days; see the section below.
+
+They compose through **NetTopologySuite**, a library they share rather than an agreement they made.
+None references another, deliberately.
+
+### How each one is tested
+
+```powershell
+# the libraries - fast, no network, no vvvv. Close vvvv first: it holds the assemblies.
+dotnet test D:\2026_Projects\vl-mapsui\test\VL.Mapsui.Tests\VL.Mapsui.Tests.csproj
+dotnet test D:\2026_Projects\vl-nettopologysuite\test\VL.NetTopologySuite.Tests\VL.NetTopologySuite.Tests.csproj
+dotnet test D:\2026_Projects\vl-geojson\test\VL.GeoJSON.Tests\VL.GeoJSON.Tests.csproj
+
+# here - there is no unit suite, and there should not be. A course is tested by compiling it.
+.\tools\Test-VLPackage.ps1                              # static: BOM, ids, links, the rules
+.\tools\Compile-HelpPatches.ps1 -OutputDirectory <abs>  # every unit, headless
+```
+
+**Four rungs, and each catches what the one below cannot.** Skipping a rung is how every silent
+failure in this family got in:
+
+1. **`Test-VLPackage.ps1`** — structure. It cannot tell you a node resolved.
+2. **`Compile-HelpPatches.ps1`** — exit 0 means the document **parsed**. It cannot tell you a node
+   resolved either: an unimported type is dropped in silence.
+3. **Read the generated C#.** This is the rung people skip. A pin fed by nothing compiles as a
+   literal (`string Cache_Folder_11 = @"";`) and looks identical to a wired one from the outside.
+   Check that values arrive from `__pad_…` and that process nodes are constructed in `__Create__`.
+4. **Open it in vvvv and look.** Two of the five defects below were invisible to every automated
+   signal — the layer rebuilt, the counters advanced, the status pins named real folders, and the
+   picture did not change. **Never leave vvvv running unattended, and launch only through
+   `tools\Open-HelpPatch.ps1`.** After any GUI session run `tools\Normalize-HelpPatches.ps1`.
+
+### Known gaps in the libraries — do not rediscover these
+
+- **`GradientTheme` is not wrapped**, so a style cannot be chosen from an attribute *value*. No
+  choropleth, and no colouring points by elevation. It has now blocked two concrete things and is
+  first on both the GST 101 list and the #30DayMapChallenge one. **The most valuable next library
+  job.**
+- **Nothing reprojects.** `SphericalMercator` is used internally and never exposed, and no
+  `VL.ProjNet` exists. Area and length in lon/lat come out in degrees.
+- **No image markers, no callouts, no layer opacity, no raster/DEM reading, no editing.**
+- **The map layer cannot be transformed inside VL.Skia** — `PixelSpace.Draw` resets the matrix — and
+  nothing produces a texture. Whether rendering the whole scene to a texture works is unmeasured.
+
+Full list with measurements: `D:\2026_Projects\vl-mapsui\docs\MAPSUI-SURFACE.md`.
+
 ## What this is
 
 **VL.Cartography is a course, not a library.** It contributes **no nodes**. It declares the three
